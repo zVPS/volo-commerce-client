@@ -93,15 +93,13 @@ class PurchaseOrdersApi
      * Confirm Delivery.
      *
      * @param int $purchase_order_id  (required)
-     * @param string $authorization Auth token (required)
-     * @param string $x_api_key API Key (required)
      * @param \VoloCommerce\Api\v1\Model\AddConfirmDeliveryRequest $body  (optional)
      * @throws \VoloCommerce\Api\v1\ApiException on non-2xx response
      * @return void
      */
-    public function confirmDelivery($purchase_order_id, $authorization, $x_api_key, $body = null)
+    public function confirmDelivery($purchase_order_id, $body = null)
     {
-        list($response) = $this->confirmDeliveryWithHttpInfo($purchase_order_id, $authorization, $x_api_key, $body);
+        list($response) = $this->confirmDeliveryWithHttpInfo($purchase_order_id, $body);
         return $response;
     }
 
@@ -111,13 +109,11 @@ class PurchaseOrdersApi
      * Confirm Delivery.
      *
      * @param int $purchase_order_id  (required)
-     * @param string $authorization Auth token (required)
-     * @param string $x_api_key API Key (required)
      * @param \VoloCommerce\Api\v1\Model\AddConfirmDeliveryRequest $body  (optional)
      * @throws \VoloCommerce\Api\v1\ApiException on non-2xx response
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
-    public function confirmDeliveryWithHttpInfo($purchase_order_id, $authorization, $x_api_key, $body = null)
+    public function confirmDeliveryWithHttpInfo($purchase_order_id, $body = null)
     {
         // verify the required parameter 'purchase_order_id' is set
         if ($purchase_order_id === null) {
@@ -144,13 +140,12 @@ class PurchaseOrdersApi
         $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType([]);
 
         // header params
-        if ($authorization !== null) {
-            $headerParams['Authorization'] = $this->apiClient->getSerializer()->toHeaderValue($authorization);
-        }
+        $authToken = $this->apiClient->getApiKeyWithPrefix('Authorization');
+        $headerParams['Authorization'] = $this->apiClient->getSerializer()->toHeaderValue($authToken);
         // header params
-        if ($x_api_key !== null) {
-            $headerParams['x-api-key'] = $this->apiClient->getSerializer()->toHeaderValue($x_api_key);
-        }
+        $accessToken = $this->apiClient->getConfig()->getAccessToken();
+        $headerParams['x-api-key'] = $this->apiClient->getSerializer()->toHeaderValue($accessToken);
+        
         // path params
         if ($purchase_order_id !== null) {
             $resourcePath = str_replace(
@@ -198,14 +193,12 @@ class PurchaseOrdersApi
      * Confirm Purchase Order.
      *
      * @param int $purchase_order_id  (required)
-     * @param string $authorization Auth token (required)
-     * @param string $x_api_key API Key (required)
      * @throws \VoloCommerce\Api\v1\ApiException on non-2xx response
      * @return void
      */
-    public function confirmOrder($purchase_order_id, $authorization, $x_api_key)
+    public function confirmOrder($purchase_order_id)
     {
-        list($response) = $this->confirmOrderWithHttpInfo($purchase_order_id, $authorization, $x_api_key);
+        list($response) = $this->confirmOrderWithHttpInfo($purchase_order_id);
         return $response;
     }
 
@@ -215,12 +208,10 @@ class PurchaseOrdersApi
      * Confirm Purchase Order.
      *
      * @param int $purchase_order_id  (required)
-     * @param string $authorization Auth token (required)
-     * @param string $x_api_key API Key (required)
      * @throws \VoloCommerce\Api\v1\ApiException on non-2xx response
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
-    public function confirmOrderWithHttpInfo($purchase_order_id, $authorization, $x_api_key)
+    public function confirmOrderWithHttpInfo($purchase_order_id)
     {
         // verify the required parameter 'purchase_order_id' is set
         if ($purchase_order_id === null) {
@@ -247,13 +238,12 @@ class PurchaseOrdersApi
         $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType([]);
 
         // header params
-        if ($authorization !== null) {
-            $headerParams['Authorization'] = $this->apiClient->getSerializer()->toHeaderValue($authorization);
-        }
+        $authToken = $this->apiClient->getApiKeyWithPrefix('Authorization');
+        $headerParams['Authorization'] = $this->apiClient->getSerializer()->toHeaderValue($authToken);
         // header params
-        if ($x_api_key !== null) {
-            $headerParams['x-api-key'] = $this->apiClient->getSerializer()->toHeaderValue($x_api_key);
-        }
+        $accessToken = $this->apiClient->getConfig()->getAccessToken();
+        $headerParams['x-api-key'] = $this->apiClient->getSerializer()->toHeaderValue($accessToken);
+        
         // path params
         if ($purchase_order_id !== null) {
             $resourcePath = str_replace(
@@ -295,15 +285,13 @@ class PurchaseOrdersApi
      *
      * Update Purchase Order.
      *
-     * @param string $authorization Auth token (required)
-     * @param string $x_api_key API Key (required)
      * @param \VoloCommerce\Api\v1\Model\UpdatePurchaseOrder $body  (optional)
      * @throws \VoloCommerce\Api\v1\ApiException on non-2xx response
      * @return void
      */
-    public function doUpdate($authorization, $x_api_key, $body = null)
+    public function doUpdate($body = null)
     {
-        list($response) = $this->doUpdateWithHttpInfo($authorization, $x_api_key, $body);
+        list($response) = $this->doUpdateWithHttpInfo($body);
         return $response;
     }
 
@@ -312,13 +300,11 @@ class PurchaseOrdersApi
      *
      * Update Purchase Order.
      *
-     * @param string $authorization Auth token (required)
-     * @param string $x_api_key API Key (required)
      * @param \VoloCommerce\Api\v1\Model\UpdatePurchaseOrder $body  (optional)
      * @throws \VoloCommerce\Api\v1\ApiException on non-2xx response
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
-    public function doUpdateWithHttpInfo($authorization, $x_api_key, $body = null)
+    public function doUpdateWithHttpInfo($body = null)
     {
         // verify the required parameter 'authorization' is set
         if ($authorization === null) {
@@ -341,13 +327,12 @@ class PurchaseOrdersApi
         $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(['application/json; charset=utf-8']);
 
         // header params
-        if ($authorization !== null) {
-            $headerParams['Authorization'] = $this->apiClient->getSerializer()->toHeaderValue($authorization);
-        }
+        $authToken = $this->apiClient->getApiKeyWithPrefix('Authorization');
+        $headerParams['Authorization'] = $this->apiClient->getSerializer()->toHeaderValue($authToken);
         // header params
-        if ($x_api_key !== null) {
-            $headerParams['x-api-key'] = $this->apiClient->getSerializer()->toHeaderValue($x_api_key);
-        }
+        $accessToken = $this->apiClient->getConfig()->getAccessToken();
+        $headerParams['x-api-key'] = $this->apiClient->getSerializer()->toHeaderValue($accessToken);
+        
         // body params
         $_tempBody = null;
         if (isset($body)) {
@@ -386,8 +371,6 @@ class PurchaseOrdersApi
      *
      * Get Purchase Order Details
      *
-     * @param string $authorization Auth token (required)
-     * @param string $x_api_key API Key (required)
      * @param int $id Purchase Order ID (optional)
      * @param string $purchase_order_number Purchase Order Number (optional)
      * @param \DateTime $start_creation_date Start date for comparison by using purchase order creation date (optional)
@@ -403,9 +386,9 @@ class PurchaseOrdersApi
      * @throws \VoloCommerce\Api\v1\ApiException on non-2xx response
      * @return \VoloCommerce\Api\v1\Model\PurchaseOrderResponse
      */
-    public function getDetails($authorization, $x_api_key, $id = null, $purchase_order_number = null, $start_creation_date = null, $end_creation_date = null, $start_confirm_date = null, $end_confirm_date = null, $order_status = null, $order_type = null, $location_id = null, $supplier_id = null, $page_number = null, $entries_per_page = null)
+    public function getDetails($id = null, $purchase_order_number = null, $start_creation_date = null, $end_creation_date = null, $start_confirm_date = null, $end_confirm_date = null, $order_status = null, $order_type = null, $location_id = null, $supplier_id = null, $page_number = null, $entries_per_page = null)
     {
-        list($response) = $this->getDetailsWithHttpInfo($authorization, $x_api_key, $id, $purchase_order_number, $start_creation_date, $end_creation_date, $start_confirm_date, $end_confirm_date, $order_status, $order_type, $location_id, $supplier_id, $page_number, $entries_per_page);
+        list($response) = $this->getDetailsWithHttpInfo($id, $purchase_order_number, $start_creation_date, $end_creation_date, $start_confirm_date, $end_confirm_date, $order_status, $order_type, $location_id, $supplier_id, $page_number, $entries_per_page);
         return $response;
     }
 
@@ -414,8 +397,6 @@ class PurchaseOrdersApi
      *
      * Get Purchase Order Details
      *
-     * @param string $authorization Auth token (required)
-     * @param string $x_api_key API Key (required)
      * @param int $id Purchase Order ID (optional)
      * @param string $purchase_order_number Purchase Order Number (optional)
      * @param \DateTime $start_creation_date Start date for comparison by using purchase order creation date (optional)
@@ -431,7 +412,7 @@ class PurchaseOrdersApi
      * @throws \VoloCommerce\Api\v1\ApiException on non-2xx response
      * @return array of \VoloCommerce\Api\v1\Model\PurchaseOrderResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getDetailsWithHttpInfo($authorization, $x_api_key, $id = null, $purchase_order_number = null, $start_creation_date = null, $end_creation_date = null, $start_confirm_date = null, $end_confirm_date = null, $order_status = null, $order_type = null, $location_id = null, $supplier_id = null, $page_number = null, $entries_per_page = null)
+    public function getDetailsWithHttpInfo($id = null, $purchase_order_number = null, $start_creation_date = null, $end_creation_date = null, $start_confirm_date = null, $end_confirm_date = null, $order_status = null, $order_type = null, $location_id = null, $supplier_id = null, $page_number = null, $entries_per_page = null)
     {
         // verify the required parameter 'authorization' is set
         if ($authorization === null) {
@@ -502,13 +483,12 @@ class PurchaseOrdersApi
             $queryParams['entriesPerPage'] = $this->apiClient->getSerializer()->toQueryValue($entries_per_page);
         }
         // header params
-        if ($authorization !== null) {
-            $headerParams['Authorization'] = $this->apiClient->getSerializer()->toHeaderValue($authorization);
-        }
+        $authToken = $this->apiClient->getApiKeyWithPrefix('Authorization');
+        $headerParams['Authorization'] = $this->apiClient->getSerializer()->toHeaderValue($authToken);
         // header params
-        if ($x_api_key !== null) {
-            $headerParams['x-api-key'] = $this->apiClient->getSerializer()->toHeaderValue($x_api_key);
-        }
+        $accessToken = $this->apiClient->getConfig()->getAccessToken();
+        $headerParams['x-api-key'] = $this->apiClient->getSerializer()->toHeaderValue($accessToken);
+        
 
         // for model (json/xml)
         if (isset($_tempBody)) {
@@ -551,14 +531,12 @@ class PurchaseOrdersApi
      * Remove Purchase Order
      *
      * @param int $purchase_order_id Purchase Order ID (required)
-     * @param string $authorization Auth token (required)
-     * @param string $x_api_key API Key (required)
      * @throws \VoloCommerce\Api\v1\ApiException on non-2xx response
      * @return void
      */
-    public function removePurchaseOrder($purchase_order_id, $authorization, $x_api_key)
+    public function removePurchaseOrder($purchase_order_id)
     {
-        list($response) = $this->removePurchaseOrderWithHttpInfo($purchase_order_id, $authorization, $x_api_key);
+        list($response) = $this->removePurchaseOrderWithHttpInfo($purchase_order_id);
         return $response;
     }
 
@@ -568,12 +546,10 @@ class PurchaseOrdersApi
      * Remove Purchase Order
      *
      * @param int $purchase_order_id Purchase Order ID (required)
-     * @param string $authorization Auth token (required)
-     * @param string $x_api_key API Key (required)
      * @throws \VoloCommerce\Api\v1\ApiException on non-2xx response
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
-    public function removePurchaseOrderWithHttpInfo($purchase_order_id, $authorization, $x_api_key)
+    public function removePurchaseOrderWithHttpInfo($purchase_order_id)
     {
         // verify the required parameter 'purchase_order_id' is set
         if ($purchase_order_id === null) {
@@ -600,13 +576,12 @@ class PurchaseOrdersApi
         $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType([]);
 
         // header params
-        if ($authorization !== null) {
-            $headerParams['Authorization'] = $this->apiClient->getSerializer()->toHeaderValue($authorization);
-        }
+        $authToken = $this->apiClient->getApiKeyWithPrefix('Authorization');
+        $headerParams['Authorization'] = $this->apiClient->getSerializer()->toHeaderValue($authToken);
         // header params
-        if ($x_api_key !== null) {
-            $headerParams['x-api-key'] = $this->apiClient->getSerializer()->toHeaderValue($x_api_key);
-        }
+        $accessToken = $this->apiClient->getConfig()->getAccessToken();
+        $headerParams['x-api-key'] = $this->apiClient->getSerializer()->toHeaderValue($accessToken);
+        
         // path params
         if ($purchase_order_id !== null) {
             $resourcePath = str_replace(
@@ -650,14 +625,12 @@ class PurchaseOrdersApi
      *
      * @param int $purchase_order_id Purchase Order ID (required)
      * @param int $purchase_order_item_id Purchase Order Item ID (required)
-     * @param string $authorization Auth token (required)
-     * @param string $x_api_key API Key (required)
      * @throws \VoloCommerce\Api\v1\ApiException on non-2xx response
      * @return void
      */
-    public function removePurchaseOrderItems($purchase_order_id, $purchase_order_item_id, $authorization, $x_api_key)
+    public function removePurchaseOrderItems($purchase_order_id, $purchase_order_item_id)
     {
-        list($response) = $this->removePurchaseOrderItemsWithHttpInfo($purchase_order_id, $purchase_order_item_id, $authorization, $x_api_key);
+        list($response) = $this->removePurchaseOrderItemsWithHttpInfo($purchase_order_id, $purchase_order_item_id);
         return $response;
     }
 
@@ -668,12 +641,10 @@ class PurchaseOrdersApi
      *
      * @param int $purchase_order_id Purchase Order ID (required)
      * @param int $purchase_order_item_id Purchase Order Item ID (required)
-     * @param string $authorization Auth token (required)
-     * @param string $x_api_key API Key (required)
      * @throws \VoloCommerce\Api\v1\ApiException on non-2xx response
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
-    public function removePurchaseOrderItemsWithHttpInfo($purchase_order_id, $purchase_order_item_id, $authorization, $x_api_key)
+    public function removePurchaseOrderItemsWithHttpInfo($purchase_order_id, $purchase_order_item_id)
     {
         // verify the required parameter 'purchase_order_id' is set
         if ($purchase_order_id === null) {
@@ -704,13 +675,12 @@ class PurchaseOrdersApi
         $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType([]);
 
         // header params
-        if ($authorization !== null) {
-            $headerParams['Authorization'] = $this->apiClient->getSerializer()->toHeaderValue($authorization);
-        }
+        $authToken = $this->apiClient->getApiKeyWithPrefix('Authorization');
+        $headerParams['Authorization'] = $this->apiClient->getSerializer()->toHeaderValue($authToken);
         // header params
-        if ($x_api_key !== null) {
-            $headerParams['x-api-key'] = $this->apiClient->getSerializer()->toHeaderValue($x_api_key);
-        }
+        $accessToken = $this->apiClient->getConfig()->getAccessToken();
+        $headerParams['x-api-key'] = $this->apiClient->getSerializer()->toHeaderValue($accessToken);
+        
         // path params
         if ($purchase_order_id !== null) {
             $resourcePath = str_replace(
@@ -760,15 +730,13 @@ class PurchaseOrdersApi
      *
      * Add a list of Purchase Order
      *
-     * @param string $authorization Auth token (required)
-     * @param string $x_api_key API Key (required)
      * @param \VoloCommerce\Api\v1\Model\AddPurchaseOrders $body  (optional)
      * @throws \VoloCommerce\Api\v1\ApiException on non-2xx response
      * @return \VoloCommerce\Api\v1\Model\PurchaseOrderResponseBeanList
      */
-    public function savePurchaseOrders($authorization, $x_api_key, $body = null)
+    public function savePurchaseOrders($body = null)
     {
-        list($response) = $this->savePurchaseOrdersWithHttpInfo($authorization, $x_api_key, $body);
+        list($response) = $this->savePurchaseOrdersWithHttpInfo($body);
         return $response;
     }
 
@@ -777,13 +745,11 @@ class PurchaseOrdersApi
      *
      * Add a list of Purchase Order
      *
-     * @param string $authorization Auth token (required)
-     * @param string $x_api_key API Key (required)
      * @param \VoloCommerce\Api\v1\Model\AddPurchaseOrders $body  (optional)
      * @throws \VoloCommerce\Api\v1\ApiException on non-2xx response
      * @return array of \VoloCommerce\Api\v1\Model\PurchaseOrderResponseBeanList, HTTP status code, HTTP response headers (array of strings)
      */
-    public function savePurchaseOrdersWithHttpInfo($authorization, $x_api_key, $body = null)
+    public function savePurchaseOrdersWithHttpInfo($body = null)
     {
         // verify the required parameter 'authorization' is set
         if ($authorization === null) {
@@ -806,13 +772,12 @@ class PurchaseOrdersApi
         $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(['application/json; charset=utf-8']);
 
         // header params
-        if ($authorization !== null) {
-            $headerParams['Authorization'] = $this->apiClient->getSerializer()->toHeaderValue($authorization);
-        }
+        $authToken = $this->apiClient->getApiKeyWithPrefix('Authorization');
+        $headerParams['Authorization'] = $this->apiClient->getSerializer()->toHeaderValue($authToken);
         // header params
-        if ($x_api_key !== null) {
-            $headerParams['x-api-key'] = $this->apiClient->getSerializer()->toHeaderValue($x_api_key);
-        }
+        $accessToken = $this->apiClient->getConfig()->getAccessToken();
+        $headerParams['x-api-key'] = $this->apiClient->getSerializer()->toHeaderValue($accessToken);
+        
         // body params
         $_tempBody = null;
         if (isset($body)) {
@@ -860,15 +825,13 @@ class PurchaseOrdersApi
      * Update deliveries.
      *
      * @param int $purchase_order_id  (required)
-     * @param string $authorization Auth token (required)
-     * @param string $x_api_key API Key (required)
      * @param \VoloCommerce\Api\v1\Model\UpdateDelivery $body  (optional)
      * @throws \VoloCommerce\Api\v1\ApiException on non-2xx response
      * @return void
      */
-    public function updateDeliveries($purchase_order_id, $authorization, $x_api_key, $body = null)
+    public function updateDeliveries($purchase_order_id, $body = null)
     {
-        list($response) = $this->updateDeliveriesWithHttpInfo($purchase_order_id, $authorization, $x_api_key, $body);
+        list($response) = $this->updateDeliveriesWithHttpInfo($purchase_order_id, $body);
         return $response;
     }
 
@@ -878,13 +841,11 @@ class PurchaseOrdersApi
      * Update deliveries.
      *
      * @param int $purchase_order_id  (required)
-     * @param string $authorization Auth token (required)
-     * @param string $x_api_key API Key (required)
      * @param \VoloCommerce\Api\v1\Model\UpdateDelivery $body  (optional)
      * @throws \VoloCommerce\Api\v1\ApiException on non-2xx response
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
-    public function updateDeliveriesWithHttpInfo($purchase_order_id, $authorization, $x_api_key, $body = null)
+    public function updateDeliveriesWithHttpInfo($purchase_order_id, $body = null)
     {
         // verify the required parameter 'purchase_order_id' is set
         if ($purchase_order_id === null) {
@@ -911,13 +872,12 @@ class PurchaseOrdersApi
         $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(['application/json']);
 
         // header params
-        if ($authorization !== null) {
-            $headerParams['Authorization'] = $this->apiClient->getSerializer()->toHeaderValue($authorization);
-        }
+        $authToken = $this->apiClient->getApiKeyWithPrefix('Authorization');
+        $headerParams['Authorization'] = $this->apiClient->getSerializer()->toHeaderValue($authToken);
         // header params
-        if ($x_api_key !== null) {
-            $headerParams['x-api-key'] = $this->apiClient->getSerializer()->toHeaderValue($x_api_key);
-        }
+        $accessToken = $this->apiClient->getConfig()->getAccessToken();
+        $headerParams['x-api-key'] = $this->apiClient->getSerializer()->toHeaderValue($accessToken);
+        
         // path params
         if ($purchase_order_id !== null) {
             $resourcePath = str_replace(

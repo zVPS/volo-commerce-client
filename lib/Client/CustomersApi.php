@@ -163,8 +163,6 @@ class CustomersApi
      *
      * Returns a list of customers
      *
-     * @param string $authorization Auth token (required)
-     * @param string $x_api_key API Key (required)
      * @param int $id Customer ID (optional)
      * @param string $name First name or last name of the customer (optional)
      * @param string $company_name Company Name (optional)
@@ -175,9 +173,9 @@ class CustomersApi
      * @throws \VoloCommerce\Api\v1\ApiException on non-2xx response
      * @return \VoloCommerce\Api\v1\Model\CustomerResponse
      */
-    public function getCustomers($authorization, $x_api_key, $id = null, $name = null, $company_name = null, $postcode = null, $email = null, $phone = null, $merchant_type = null)
+    public function getCustomers($id = null, $name = null, $company_name = null, $postcode = null, $email = null, $phone = null, $merchant_type = null)
     {
-        list($response) = $this->getCustomersWithHttpInfo($authorization, $x_api_key, $id, $name, $company_name, $postcode, $email, $phone, $merchant_type);
+        list($response) = $this->getCustomersWithHttpInfo($id, $name, $company_name, $postcode, $email, $phone, $merchant_type);
         return $response;
     }
 
@@ -186,8 +184,6 @@ class CustomersApi
      *
      * Returns a list of customers
      *
-     * @param string $authorization Auth token (required)
-     * @param string $x_api_key API Key (required)
      * @param int $id Customer ID (optional)
      * @param string $name First name or last name of the customer (optional)
      * @param string $company_name Company Name (optional)
@@ -198,7 +194,7 @@ class CustomersApi
      * @throws \VoloCommerce\Api\v1\ApiException on non-2xx response
      * @return array of \VoloCommerce\Api\v1\Model\CustomerResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getCustomersWithHttpInfo($authorization, $x_api_key, $id = null, $name = null, $company_name = null, $postcode = null, $email = null, $phone = null, $merchant_type = null)
+    public function getCustomersWithHttpInfo($id = null, $name = null, $company_name = null, $postcode = null, $email = null, $phone = null, $merchant_type = null)
     {
         // verify the required parameter 'authorization' is set
         if ($authorization === null) {
@@ -249,13 +245,12 @@ class CustomersApi
             $queryParams['merchantType'] = $this->apiClient->getSerializer()->toQueryValue($merchant_type);
         }
         // header params
-        if ($authorization !== null) {
-            $headerParams['Authorization'] = $this->apiClient->getSerializer()->toHeaderValue($authorization);
-        }
+        $authToken = $this->apiClient->getApiKeyWithPrefix('Authorization');
+        $headerParams['Authorization'] = $this->apiClient->getSerializer()->toHeaderValue($authToken);
         // header params
-        if ($x_api_key !== null) {
-            $headerParams['x-api-key'] = $this->apiClient->getSerializer()->toHeaderValue($x_api_key);
-        }
+        $accessToken = $this->apiClient->getConfig()->getAccessToken();
+        $headerParams['x-api-key'] = $this->apiClient->getSerializer()->toHeaderValue($accessToken);
+        
 
         // for model (json/xml)
         if (isset($_tempBody)) {
@@ -298,14 +293,12 @@ class CustomersApi
      * Delete the customer
      *
      * @param int $customer_id Customer id (required)
-     * @param string $authorization Auth token (required)
-     * @param string $x_api_key API Key (required)
      * @throws \VoloCommerce\Api\v1\ApiException on non-2xx response
      * @return \VoloCommerce\Api\v1\Model\DeleteCustomerResponse
      */
-    public function removeCustomer($customer_id, $authorization, $x_api_key)
+    public function removeCustomer($customer_id)
     {
-        list($response) = $this->removeCustomerWithHttpInfo($customer_id, $authorization, $x_api_key);
+        list($response) = $this->removeCustomerWithHttpInfo($customer_id);
         return $response;
     }
 
@@ -315,12 +308,10 @@ class CustomersApi
      * Delete the customer
      *
      * @param int $customer_id Customer id (required)
-     * @param string $authorization Auth token (required)
-     * @param string $x_api_key API Key (required)
      * @throws \VoloCommerce\Api\v1\ApiException on non-2xx response
      * @return array of \VoloCommerce\Api\v1\Model\DeleteCustomerResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function removeCustomerWithHttpInfo($customer_id, $authorization, $x_api_key)
+    public function removeCustomerWithHttpInfo($customer_id)
     {
         // verify the required parameter 'customer_id' is set
         if ($customer_id === null) {
@@ -347,13 +338,12 @@ class CustomersApi
         $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(['application/json; charset=utf-8']);
 
         // header params
-        if ($authorization !== null) {
-            $headerParams['Authorization'] = $this->apiClient->getSerializer()->toHeaderValue($authorization);
-        }
+        $authToken = $this->apiClient->getApiKeyWithPrefix('Authorization');
+        $headerParams['Authorization'] = $this->apiClient->getSerializer()->toHeaderValue($authToken);
         // header params
-        if ($x_api_key !== null) {
-            $headerParams['x-api-key'] = $this->apiClient->getSerializer()->toHeaderValue($x_api_key);
-        }
+        $accessToken = $this->apiClient->getConfig()->getAccessToken();
+        $headerParams['x-api-key'] = $this->apiClient->getSerializer()->toHeaderValue($accessToken);
+        
         // path params
         if ($customer_id !== null) {
             $resourcePath = str_replace(
@@ -403,15 +393,13 @@ class CustomersApi
      *
      * Add a list of customers
      *
-     * @param string $authorization Auth token (required)
-     * @param string $x_api_key API Key (required)
      * @param \VoloCommerce\Api\v1\Model\AddCustomers $body  (optional)
      * @throws \VoloCommerce\Api\v1\ApiException on non-2xx response
      * @return \VoloCommerce\Api\v1\Model\CustomerResponseBeanList
      */
-    public function saveCustomers($authorization, $x_api_key, $body = null)
+    public function saveCustomers($body = null)
     {
-        list($response) = $this->saveCustomersWithHttpInfo($authorization, $x_api_key, $body);
+        list($response) = $this->saveCustomersWithHttpInfo($body);
         return $response;
     }
 
@@ -420,13 +408,11 @@ class CustomersApi
      *
      * Add a list of customers
      *
-     * @param string $authorization Auth token (required)
-     * @param string $x_api_key API Key (required)
      * @param \VoloCommerce\Api\v1\Model\AddCustomers $body  (optional)
      * @throws \VoloCommerce\Api\v1\ApiException on non-2xx response
      * @return array of \VoloCommerce\Api\v1\Model\CustomerResponseBeanList, HTTP status code, HTTP response headers (array of strings)
      */
-    public function saveCustomersWithHttpInfo($authorization, $x_api_key, $body = null)
+    public function saveCustomersWithHttpInfo($body = null)
     {
         // verify the required parameter 'authorization' is set
         if ($authorization === null) {
@@ -449,13 +435,12 @@ class CustomersApi
         $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(['application/json; charset=utf-8']);
 
         // header params
-        if ($authorization !== null) {
-            $headerParams['Authorization'] = $this->apiClient->getSerializer()->toHeaderValue($authorization);
-        }
+        $authToken = $this->apiClient->getApiKeyWithPrefix('Authorization');
+        $headerParams['Authorization'] = $this->apiClient->getSerializer()->toHeaderValue($authToken);
         // header params
-        if ($x_api_key !== null) {
-            $headerParams['x-api-key'] = $this->apiClient->getSerializer()->toHeaderValue($x_api_key);
-        }
+        $accessToken = $this->apiClient->getConfig()->getAccessToken();
+        $headerParams['x-api-key'] = $this->apiClient->getSerializer()->toHeaderValue($accessToken);
+        
         // body params
         $_tempBody = null;
         if (isset($body)) {

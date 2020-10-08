@@ -93,14 +93,12 @@ class BatchApi
      * Returns status of a given batch. The batch ID is provided by the asynchronous methods
      *
      * @param string $batch_id Batch ID (required)
-     * @param string $authorization Auth token (required)
-     * @param string $x_api_key API Key (required)
      * @throws \VoloCommerce\Api\v1\ApiException on non-2xx response
      * @return \VoloCommerce\Api\v1\Model\BatchStatusResponse
      */
-    public function getBatchStatus($batch_id, $authorization, $x_api_key)
+    public function getBatchStatus($batch_id)
     {
-        list($response) = $this->getBatchStatusWithHttpInfo($batch_id, $authorization, $x_api_key);
+        list($response) = $this->getBatchStatusWithHttpInfo($batch_id);
         return $response;
     }
 
@@ -110,12 +108,10 @@ class BatchApi
      * Returns status of a given batch. The batch ID is provided by the asynchronous methods
      *
      * @param string $batch_id Batch ID (required)
-     * @param string $authorization Auth token (required)
-     * @param string $x_api_key API Key (required)
      * @throws \VoloCommerce\Api\v1\ApiException on non-2xx response
      * @return array of \VoloCommerce\Api\v1\Model\BatchStatusResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getBatchStatusWithHttpInfo($batch_id, $authorization, $x_api_key)
+    public function getBatchStatusWithHttpInfo($batch_id)
     {
         // verify the required parameter 'batch_id' is set
         if ($batch_id === null) {
@@ -142,13 +138,12 @@ class BatchApi
         $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType([]);
 
         // header params
-        if ($authorization !== null) {
-            $headerParams['Authorization'] = $this->apiClient->getSerializer()->toHeaderValue($authorization);
-        }
+        $authToken = $this->apiClient->getApiKeyWithPrefix('Authorization');
+        $headerParams['Authorization'] = $this->apiClient->getSerializer()->toHeaderValue($authToken);
         // header params
-        if ($x_api_key !== null) {
-            $headerParams['x-api-key'] = $this->apiClient->getSerializer()->toHeaderValue($x_api_key);
-        }
+        $accessToken = $this->apiClient->getConfig()->getAccessToken();
+        $headerParams['x-api-key'] = $this->apiClient->getSerializer()->toHeaderValue($accessToken);
+        
         // path params
         if ($batch_id !== null) {
             $resourcePath = str_replace(

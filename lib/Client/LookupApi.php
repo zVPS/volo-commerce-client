@@ -92,14 +92,12 @@ class LookupApi
      *
      * Returns standard set of Tax Rates
      *
-     * @param string $authorization Auth token (required)
-     * @param string $x_api_key API Key (required)
      * @throws \VoloCommerce\Api\v1\ApiException on non-2xx response
      * @return \VoloCommerce\Api\v1\Model\TaxCodesResultResponse
      */
-    public function getOrderTaxRates($authorization, $x_api_key)
+    public function getOrderTaxRates()
     {
-        list($response) = $this->getOrderTaxRatesWithHttpInfo($authorization, $x_api_key);
+        list($response) = $this->getOrderTaxRatesWithHttpInfo();
         return $response;
     }
 
@@ -108,12 +106,10 @@ class LookupApi
      *
      * Returns standard set of Tax Rates
      *
-     * @param string $authorization Auth token (required)
-     * @param string $x_api_key API Key (required)
      * @throws \VoloCommerce\Api\v1\ApiException on non-2xx response
      * @return array of \VoloCommerce\Api\v1\Model\TaxCodesResultResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getOrderTaxRatesWithHttpInfo($authorization, $x_api_key)
+    public function getOrderTaxRatesWithHttpInfo()
     {
         // verify the required parameter 'authorization' is set
         if ($authorization === null) {
@@ -136,13 +132,12 @@ class LookupApi
         $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType([]);
 
         // header params
-        if ($authorization !== null) {
-            $headerParams['Authorization'] = $this->apiClient->getSerializer()->toHeaderValue($authorization);
-        }
+        $authToken = $this->apiClient->getApiKeyWithPrefix('Authorization');
+        $headerParams['Authorization'] = $this->apiClient->getSerializer()->toHeaderValue($authToken);
         // header params
-        if ($x_api_key !== null) {
-            $headerParams['x-api-key'] = $this->apiClient->getSerializer()->toHeaderValue($x_api_key);
-        }
+        $accessToken = $this->apiClient->getConfig()->getAccessToken();
+        $headerParams['x-api-key'] = $this->apiClient->getSerializer()->toHeaderValue($accessToken);
+        
 
         // for model (json/xml)
         if (isset($_tempBody)) {

@@ -245,8 +245,6 @@ class LocationsApi
      *
      * Returns locations based on given criteria
      *
-     * @param string $authorization Auth token (required)
-     * @param string $x_api_key API Key (required)
      * @param int $id Location ID (optional)
      * @param int $parent_id ID of the parent location (optional)
      * @param bool $pickable Pickable location? (optional)
@@ -257,9 +255,9 @@ class LocationsApi
      * @throws \VoloCommerce\Api\v1\ApiException on non-2xx response
      * @return \VoloCommerce\Api\v1\Model\LocationsResponse
      */
-    public function getLocations($authorization, $x_api_key, $id = null, $parent_id = null, $pickable = null, $physical_location = null, $virtual_stock = null, $page_number = null, $entries_per_page = null)
+    public function getLocations($id = null, $parent_id = null, $pickable = null, $physical_location = null, $virtual_stock = null, $page_number = null, $entries_per_page = null)
     {
-        list($response) = $this->getLocationsWithHttpInfo($authorization, $x_api_key, $id, $parent_id, $pickable, $physical_location, $virtual_stock, $page_number, $entries_per_page);
+        list($response) = $this->getLocationsWithHttpInfo($id, $parent_id, $pickable, $physical_location, $virtual_stock, $page_number, $entries_per_page);
         return $response;
     }
 
@@ -268,8 +266,6 @@ class LocationsApi
      *
      * Returns locations based on given criteria
      *
-     * @param string $authorization Auth token (required)
-     * @param string $x_api_key API Key (required)
      * @param int $id Location ID (optional)
      * @param int $parent_id ID of the parent location (optional)
      * @param bool $pickable Pickable location? (optional)
@@ -280,7 +276,7 @@ class LocationsApi
      * @throws \VoloCommerce\Api\v1\ApiException on non-2xx response
      * @return array of \VoloCommerce\Api\v1\Model\LocationsResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getLocationsWithHttpInfo($authorization, $x_api_key, $id = null, $parent_id = null, $pickable = null, $physical_location = null, $virtual_stock = null, $page_number = null, $entries_per_page = null)
+    public function getLocationsWithHttpInfo($id = null, $parent_id = null, $pickable = null, $physical_location = null, $virtual_stock = null, $page_number = null, $entries_per_page = null)
     {
         // verify the required parameter 'authorization' is set
         if ($authorization === null) {
@@ -331,13 +327,12 @@ class LocationsApi
             $queryParams['entriesPerPage'] = $this->apiClient->getSerializer()->toQueryValue($entries_per_page);
         }
         // header params
-        if ($authorization !== null) {
-            $headerParams['Authorization'] = $this->apiClient->getSerializer()->toHeaderValue($authorization);
-        }
+        $authToken = $this->apiClient->getApiKeyWithPrefix('Authorization');
+        $headerParams['Authorization'] = $this->apiClient->getSerializer()->toHeaderValue($authToken);
         // header params
-        if ($x_api_key !== null) {
-            $headerParams['x-api-key'] = $this->apiClient->getSerializer()->toHeaderValue($x_api_key);
-        }
+        $accessToken = $this->apiClient->getConfig()->getAccessToken();
+        $headerParams['x-api-key'] = $this->apiClient->getSerializer()->toHeaderValue($accessToken);
+        
 
         // for model (json/xml)
         if (isset($_tempBody)) {
@@ -379,15 +374,13 @@ class LocationsApi
      *
      * Add new locations
      *
-     * @param string $authorization Auth token (required)
-     * @param string $x_api_key API Key (required)
      * @param \VoloCommerce\Api\v1\Model\AddLocations $body  (optional)
      * @throws \VoloCommerce\Api\v1\ApiException on non-2xx response
      * @return void
      */
-    public function saveLocations($authorization, $x_api_key, $body = null)
+    public function saveLocations($body = null)
     {
-        list($response) = $this->saveLocationsWithHttpInfo($authorization, $x_api_key, $body);
+        list($response) = $this->saveLocationsWithHttpInfo($body);
         return $response;
     }
 
@@ -396,13 +389,11 @@ class LocationsApi
      *
      * Add new locations
      *
-     * @param string $authorization Auth token (required)
-     * @param string $x_api_key API Key (required)
      * @param \VoloCommerce\Api\v1\Model\AddLocations $body  (optional)
      * @throws \VoloCommerce\Api\v1\ApiException on non-2xx response
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
-    public function saveLocationsWithHttpInfo($authorization, $x_api_key, $body = null)
+    public function saveLocationsWithHttpInfo($body = null)
     {
         // verify the required parameter 'authorization' is set
         if ($authorization === null) {
@@ -425,13 +416,12 @@ class LocationsApi
         $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(['application/json; charset=utf-8']);
 
         // header params
-        if ($authorization !== null) {
-            $headerParams['Authorization'] = $this->apiClient->getSerializer()->toHeaderValue($authorization);
-        }
+        $authToken = $this->apiClient->getApiKeyWithPrefix('Authorization');
+        $headerParams['Authorization'] = $this->apiClient->getSerializer()->toHeaderValue($authToken);
         // header params
-        if ($x_api_key !== null) {
-            $headerParams['x-api-key'] = $this->apiClient->getSerializer()->toHeaderValue($x_api_key);
-        }
+        $accessToken = $this->apiClient->getConfig()->getAccessToken();
+        $headerParams['x-api-key'] = $this->apiClient->getSerializer()->toHeaderValue($accessToken);
+        
         // body params
         $_tempBody = null;
         if (isset($body)) {

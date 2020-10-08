@@ -92,15 +92,13 @@ class WebhooksApi
      *
      * Returns registed webhook id
      *
-     * @param string $authorization Auth token (required)
-     * @param string $x_api_key API Key (required)
      * @param \VoloCommerce\Api\v1\Model\RegisterWebHookRequest $body  (optional)
      * @throws \VoloCommerce\Api\v1\ApiException on non-2xx response
      * @return \VoloCommerce\Api\v1\Model\WebHookSubcribeResponse
      */
-    public function createHook($authorization, $x_api_key, $body = null)
+    public function createHook($body = null)
     {
-        list($response) = $this->createHookWithHttpInfo($authorization, $x_api_key, $body);
+        list($response) = $this->createHookWithHttpInfo($body);
         return $response;
     }
 
@@ -109,13 +107,11 @@ class WebhooksApi
      *
      * Returns registed webhook id
      *
-     * @param string $authorization Auth token (required)
-     * @param string $x_api_key API Key (required)
      * @param \VoloCommerce\Api\v1\Model\RegisterWebHookRequest $body  (optional)
      * @throws \VoloCommerce\Api\v1\ApiException on non-2xx response
      * @return array of \VoloCommerce\Api\v1\Model\WebHookSubcribeResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function createHookWithHttpInfo($authorization, $x_api_key, $body = null)
+    public function createHookWithHttpInfo($body = null)
     {
         // verify the required parameter 'authorization' is set
         if ($authorization === null) {
@@ -138,13 +134,12 @@ class WebhooksApi
         $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(['application/json; charset=utf-8']);
 
         // header params
-        if ($authorization !== null) {
-            $headerParams['Authorization'] = $this->apiClient->getSerializer()->toHeaderValue($authorization);
-        }
+        $authToken = $this->apiClient->getApiKeyWithPrefix('Authorization');
+        $headerParams['Authorization'] = $this->apiClient->getSerializer()->toHeaderValue($authToken);
         // header params
-        if ($x_api_key !== null) {
-            $headerParams['x-api-key'] = $this->apiClient->getSerializer()->toHeaderValue($x_api_key);
-        }
+        $accessToken = $this->apiClient->getConfig()->getAccessToken();
+        $headerParams['x-api-key'] = $this->apiClient->getSerializer()->toHeaderValue($accessToken);
+        
         // body params
         $_tempBody = null;
         if (isset($body)) {
@@ -192,14 +187,12 @@ class WebhooksApi
      * Delete registered webhook
      *
      * @param int $web_hook_id WebHook ID (required)
-     * @param string $authorization Auth token (required)
-     * @param string $x_api_key API Key (required)
      * @throws \VoloCommerce\Api\v1\ApiException on non-2xx response
      * @return \VoloCommerce\Api\v1\Model\DeleteWebHookResponse
      */
-    public function doDelete($web_hook_id, $authorization, $x_api_key)
+    public function doDelete($web_hook_id)
     {
-        list($response) = $this->doDeleteWithHttpInfo($web_hook_id, $authorization, $x_api_key);
+        list($response) = $this->doDeleteWithHttpInfo($web_hook_id);
         return $response;
     }
 
@@ -209,12 +202,10 @@ class WebhooksApi
      * Delete registered webhook
      *
      * @param int $web_hook_id WebHook ID (required)
-     * @param string $authorization Auth token (required)
-     * @param string $x_api_key API Key (required)
      * @throws \VoloCommerce\Api\v1\ApiException on non-2xx response
      * @return array of \VoloCommerce\Api\v1\Model\DeleteWebHookResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function doDeleteWithHttpInfo($web_hook_id, $authorization, $x_api_key)
+    public function doDeleteWithHttpInfo($web_hook_id)
     {
         // verify the required parameter 'web_hook_id' is set
         if ($web_hook_id === null) {
@@ -241,13 +232,12 @@ class WebhooksApi
         $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(['application/json; charset=utf-8']);
 
         // header params
-        if ($authorization !== null) {
-            $headerParams['Authorization'] = $this->apiClient->getSerializer()->toHeaderValue($authorization);
-        }
+        $authToken = $this->apiClient->getApiKeyWithPrefix('Authorization');
+        $headerParams['Authorization'] = $this->apiClient->getSerializer()->toHeaderValue($authToken);
         // header params
-        if ($x_api_key !== null) {
-            $headerParams['x-api-key'] = $this->apiClient->getSerializer()->toHeaderValue($x_api_key);
-        }
+        $accessToken = $this->apiClient->getConfig()->getAccessToken();
+        $headerParams['x-api-key'] = $this->apiClient->getSerializer()->toHeaderValue($accessToken);
+        
         // path params
         if ($web_hook_id !== null) {
             $resourcePath = str_replace(
@@ -297,14 +287,12 @@ class WebhooksApi
      *
      * Returns list of available events
      *
-     * @param string $authorization Auth token (required)
-     * @param string $x_api_key API Key (required)
      * @throws \VoloCommerce\Api\v1\ApiException on non-2xx response
      * @return \VoloCommerce\Api\v1\Model\EventResponse
      */
-    public function getAvailableEvents($authorization, $x_api_key)
+    public function getAvailableEvents()
     {
-        list($response) = $this->getAvailableEventsWithHttpInfo($authorization, $x_api_key);
+        list($response) = $this->getAvailableEventsWithHttpInfo();
         return $response;
     }
 
@@ -313,12 +301,10 @@ class WebhooksApi
      *
      * Returns list of available events
      *
-     * @param string $authorization Auth token (required)
-     * @param string $x_api_key API Key (required)
      * @throws \VoloCommerce\Api\v1\ApiException on non-2xx response
      * @return array of \VoloCommerce\Api\v1\Model\EventResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getAvailableEventsWithHttpInfo($authorization, $x_api_key)
+    public function getAvailableEventsWithHttpInfo()
     {
         // verify the required parameter 'authorization' is set
         if ($authorization === null) {
@@ -341,13 +327,12 @@ class WebhooksApi
         $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType([]);
 
         // header params
-        if ($authorization !== null) {
-            $headerParams['Authorization'] = $this->apiClient->getSerializer()->toHeaderValue($authorization);
-        }
+        $authToken = $this->apiClient->getApiKeyWithPrefix('Authorization');
+        $headerParams['Authorization'] = $this->apiClient->getSerializer()->toHeaderValue($authToken);
         // header params
-        if ($x_api_key !== null) {
-            $headerParams['x-api-key'] = $this->apiClient->getSerializer()->toHeaderValue($x_api_key);
-        }
+        $accessToken = $this->apiClient->getConfig()->getAccessToken();
+        $headerParams['x-api-key'] = $this->apiClient->getSerializer()->toHeaderValue($accessToken);
+        
 
         // for model (json/xml)
         if (isset($_tempBody)) {
@@ -390,14 +375,12 @@ class WebhooksApi
      * Returns list of available scopes
      *
      * @param string $event_type Event Type (required)
-     * @param string $authorization Auth token (required)
-     * @param string $x_api_key API Key (required)
      * @throws \VoloCommerce\Api\v1\ApiException on non-2xx response
      * @return \VoloCommerce\Api\v1\Model\ScopeResponse
      */
-    public function getAvailableScope($event_type, $authorization, $x_api_key)
+    public function getAvailableScope($event_type)
     {
-        list($response) = $this->getAvailableScopeWithHttpInfo($event_type, $authorization, $x_api_key);
+        list($response) = $this->getAvailableScopeWithHttpInfo($event_type);
         return $response;
     }
 
@@ -407,12 +390,10 @@ class WebhooksApi
      * Returns list of available scopes
      *
      * @param string $event_type Event Type (required)
-     * @param string $authorization Auth token (required)
-     * @param string $x_api_key API Key (required)
      * @throws \VoloCommerce\Api\v1\ApiException on non-2xx response
      * @return array of \VoloCommerce\Api\v1\Model\ScopeResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getAvailableScopeWithHttpInfo($event_type, $authorization, $x_api_key)
+    public function getAvailableScopeWithHttpInfo($event_type)
     {
         // verify the required parameter 'event_type' is set
         if ($event_type === null) {
@@ -439,13 +420,12 @@ class WebhooksApi
         $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType([]);
 
         // header params
-        if ($authorization !== null) {
-            $headerParams['Authorization'] = $this->apiClient->getSerializer()->toHeaderValue($authorization);
-        }
+        $authToken = $this->apiClient->getApiKeyWithPrefix('Authorization');
+        $headerParams['Authorization'] = $this->apiClient->getSerializer()->toHeaderValue($authToken);
         // header params
-        if ($x_api_key !== null) {
-            $headerParams['x-api-key'] = $this->apiClient->getSerializer()->toHeaderValue($x_api_key);
-        }
+        $accessToken = $this->apiClient->getConfig()->getAccessToken();
+        $headerParams['x-api-key'] = $this->apiClient->getSerializer()->toHeaderValue($accessToken);
+        
         // path params
         if ($event_type !== null) {
             $resourcePath = str_replace(
@@ -495,8 +475,6 @@ class WebhooksApi
      *
      * Returns registered webhooks
      *
-     * @param string $authorization Auth token (required)
-     * @param string $x_api_key API Key (required)
      * @param int $web_hook_id WebHook ID to join scopes and fetch subscriptions (optional)
      * @param string $event Event - example REFUND (optional)
      * @param string $type Type to group scope codes for a WebHook (optional)
@@ -504,9 +482,9 @@ class WebhooksApi
      * @throws \VoloCommerce\Api\v1\ApiException on non-2xx response
      * @return \VoloCommerce\Api\v1\Model\WebHookResponse
      */
-    public function getWebHooks($authorization, $x_api_key, $web_hook_id = null, $event = null, $type = null, $code = null)
+    public function getWebHooks($web_hook_id = null, $event = null, $type = null, $code = null)
     {
-        list($response) = $this->getWebHooksWithHttpInfo($authorization, $x_api_key, $web_hook_id, $event, $type, $code);
+        list($response) = $this->getWebHooksWithHttpInfo($web_hook_id, $event, $type, $code);
         return $response;
     }
 
@@ -515,8 +493,6 @@ class WebhooksApi
      *
      * Returns registered webhooks
      *
-     * @param string $authorization Auth token (required)
-     * @param string $x_api_key API Key (required)
      * @param int $web_hook_id WebHook ID to join scopes and fetch subscriptions (optional)
      * @param string $event Event - example REFUND (optional)
      * @param string $type Type to group scope codes for a WebHook (optional)
@@ -524,7 +500,7 @@ class WebhooksApi
      * @throws \VoloCommerce\Api\v1\ApiException on non-2xx response
      * @return array of \VoloCommerce\Api\v1\Model\WebHookResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getWebHooksWithHttpInfo($authorization, $x_api_key, $web_hook_id = null, $event = null, $type = null, $code = null)
+    public function getWebHooksWithHttpInfo($web_hook_id = null, $event = null, $type = null, $code = null)
     {
         // verify the required parameter 'authorization' is set
         if ($authorization === null) {
@@ -563,13 +539,12 @@ class WebhooksApi
             $queryParams['code'] = $this->apiClient->getSerializer()->toQueryValue($code);
         }
         // header params
-        if ($authorization !== null) {
-            $headerParams['Authorization'] = $this->apiClient->getSerializer()->toHeaderValue($authorization);
-        }
+        $authToken = $this->apiClient->getApiKeyWithPrefix('Authorization');
+        $headerParams['Authorization'] = $this->apiClient->getSerializer()->toHeaderValue($authToken);
         // header params
-        if ($x_api_key !== null) {
-            $headerParams['x-api-key'] = $this->apiClient->getSerializer()->toHeaderValue($x_api_key);
-        }
+        $accessToken = $this->apiClient->getConfig()->getAccessToken();
+        $headerParams['x-api-key'] = $this->apiClient->getSerializer()->toHeaderValue($accessToken);
+        
 
         // for model (json/xml)
         if (isset($_tempBody)) {
@@ -612,15 +587,13 @@ class WebhooksApi
      * Update registered webhook
      *
      * @param int $web_hook_id WebHook ID (required)
-     * @param string $authorization Auth token (required)
-     * @param string $x_api_key API Key (required)
      * @param \VoloCommerce\Api\v1\Model\UpdateWebHookRequest $body  (optional)
      * @throws \VoloCommerce\Api\v1\ApiException on non-2xx response
      * @return \VoloCommerce\Api\v1\Model\WebHookUpdateResponse
      */
-    public function updateWebhooks($web_hook_id, $authorization, $x_api_key, $body = null)
+    public function updateWebhooks($web_hook_id, $body = null)
     {
-        list($response) = $this->updateWebhooksWithHttpInfo($web_hook_id, $authorization, $x_api_key, $body);
+        list($response) = $this->updateWebhooksWithHttpInfo($web_hook_id, $body);
         return $response;
     }
 
@@ -630,13 +603,11 @@ class WebhooksApi
      * Update registered webhook
      *
      * @param int $web_hook_id WebHook ID (required)
-     * @param string $authorization Auth token (required)
-     * @param string $x_api_key API Key (required)
      * @param \VoloCommerce\Api\v1\Model\UpdateWebHookRequest $body  (optional)
      * @throws \VoloCommerce\Api\v1\ApiException on non-2xx response
      * @return array of \VoloCommerce\Api\v1\Model\WebHookUpdateResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function updateWebhooksWithHttpInfo($web_hook_id, $authorization, $x_api_key, $body = null)
+    public function updateWebhooksWithHttpInfo($web_hook_id, $body = null)
     {
         // verify the required parameter 'web_hook_id' is set
         if ($web_hook_id === null) {
@@ -663,13 +634,12 @@ class WebhooksApi
         $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(['application/json; charset=utf-8']);
 
         // header params
-        if ($authorization !== null) {
-            $headerParams['Authorization'] = $this->apiClient->getSerializer()->toHeaderValue($authorization);
-        }
+        $authToken = $this->apiClient->getApiKeyWithPrefix('Authorization');
+        $headerParams['Authorization'] = $this->apiClient->getSerializer()->toHeaderValue($authToken);
         // header params
-        if ($x_api_key !== null) {
-            $headerParams['x-api-key'] = $this->apiClient->getSerializer()->toHeaderValue($x_api_key);
-        }
+        $accessToken = $this->apiClient->getConfig()->getAccessToken();
+        $headerParams['x-api-key'] = $this->apiClient->getSerializer()->toHeaderValue($accessToken);
+        
         // path params
         if ($web_hook_id !== null) {
             $resourcePath = str_replace(

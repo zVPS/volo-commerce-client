@@ -167,8 +167,6 @@ class SuppliersApi
      *
      * Returns a list of suppliers
      *
-     * @param string $authorization Auth token (required)
-     * @param string $x_api_key API Key (required)
      * @param int $id Indicates id of the supplier (optional)
      * @param string $supplier_code Indicates supplierCode of the supplier (optional)
      * @param string $supplier_reference Indicates supplierReference of the supplier (optional)
@@ -184,9 +182,9 @@ class SuppliersApi
      * @throws \VoloCommerce\Api\v1\ApiException on non-2xx response
      * @return \VoloCommerce\Api\v1\Model\SuppliersResponse
      */
-    public function getSuppliers($authorization, $x_api_key, $id = null, $supplier_code = null, $supplier_reference = null, $name = null, $vat_number = null, $company_reg_number = null, $phone = null, $fax = null, $email = null, $contact = null, $start_modified_date = null, $end_modified_date = null)
+    public function getSuppliers($id = null, $supplier_code = null, $supplier_reference = null, $name = null, $vat_number = null, $company_reg_number = null, $phone = null, $fax = null, $email = null, $contact = null, $start_modified_date = null, $end_modified_date = null)
     {
-        list($response) = $this->getSuppliersWithHttpInfo($authorization, $x_api_key, $id, $supplier_code, $supplier_reference, $name, $vat_number, $company_reg_number, $phone, $fax, $email, $contact, $start_modified_date, $end_modified_date);
+        list($response) = $this->getSuppliersWithHttpInfo($id, $supplier_code, $supplier_reference, $name, $vat_number, $company_reg_number, $phone, $fax, $email, $contact, $start_modified_date, $end_modified_date);
         return $response;
     }
 
@@ -195,8 +193,6 @@ class SuppliersApi
      *
      * Returns a list of suppliers
      *
-     * @param string $authorization Auth token (required)
-     * @param string $x_api_key API Key (required)
      * @param int $id Indicates id of the supplier (optional)
      * @param string $supplier_code Indicates supplierCode of the supplier (optional)
      * @param string $supplier_reference Indicates supplierReference of the supplier (optional)
@@ -212,7 +208,7 @@ class SuppliersApi
      * @throws \VoloCommerce\Api\v1\ApiException on non-2xx response
      * @return array of \VoloCommerce\Api\v1\Model\SuppliersResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getSuppliersWithHttpInfo($authorization, $x_api_key, $id = null, $supplier_code = null, $supplier_reference = null, $name = null, $vat_number = null, $company_reg_number = null, $phone = null, $fax = null, $email = null, $contact = null, $start_modified_date = null, $end_modified_date = null)
+    public function getSuppliersWithHttpInfo($id = null, $supplier_code = null, $supplier_reference = null, $name = null, $vat_number = null, $company_reg_number = null, $phone = null, $fax = null, $email = null, $contact = null, $start_modified_date = null, $end_modified_date = null)
     {
         // verify the required parameter 'authorization' is set
         if ($authorization === null) {
@@ -283,13 +279,12 @@ class SuppliersApi
             $queryParams['endModifiedDate'] = $this->apiClient->getSerializer()->toQueryValue($end_modified_date);
         }
         // header params
-        if ($authorization !== null) {
-            $headerParams['Authorization'] = $this->apiClient->getSerializer()->toHeaderValue($authorization);
-        }
+        $authToken = $this->apiClient->getApiKeyWithPrefix('Authorization');
+        $headerParams['Authorization'] = $this->apiClient->getSerializer()->toHeaderValue($authToken);
         // header params
-        if ($x_api_key !== null) {
-            $headerParams['x-api-key'] = $this->apiClient->getSerializer()->toHeaderValue($x_api_key);
-        }
+        $accessToken = $this->apiClient->getConfig()->getAccessToken();
+        $headerParams['x-api-key'] = $this->apiClient->getSerializer()->toHeaderValue($accessToken);
+        
 
         // for model (json/xml)
         if (isset($_tempBody)) {
@@ -332,14 +327,12 @@ class SuppliersApi
      * Delete the supplier
      *
      * @param int $supplier_id Supplier id (required)
-     * @param string $authorization Auth token (required)
-     * @param string $x_api_key API Key (required)
      * @throws \VoloCommerce\Api\v1\ApiException on non-2xx response
      * @return \VoloCommerce\Api\v1\Model\DeleteSupplierResponse
      */
-    public function removeSupplier($supplier_id, $authorization, $x_api_key)
+    public function removeSupplier($supplier_id)
     {
-        list($response) = $this->removeSupplierWithHttpInfo($supplier_id, $authorization, $x_api_key);
+        list($response) = $this->removeSupplierWithHttpInfo($supplier_id);
         return $response;
     }
 
@@ -349,12 +342,10 @@ class SuppliersApi
      * Delete the supplier
      *
      * @param int $supplier_id Supplier id (required)
-     * @param string $authorization Auth token (required)
-     * @param string $x_api_key API Key (required)
      * @throws \VoloCommerce\Api\v1\ApiException on non-2xx response
      * @return array of \VoloCommerce\Api\v1\Model\DeleteSupplierResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function removeSupplierWithHttpInfo($supplier_id, $authorization, $x_api_key)
+    public function removeSupplierWithHttpInfo($supplier_id)
     {
         // verify the required parameter 'supplier_id' is set
         if ($supplier_id === null) {
@@ -381,13 +372,12 @@ class SuppliersApi
         $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(['application/json; charset=utf-8']);
 
         // header params
-        if ($authorization !== null) {
-            $headerParams['Authorization'] = $this->apiClient->getSerializer()->toHeaderValue($authorization);
-        }
+        $authToken = $this->apiClient->getApiKeyWithPrefix('Authorization');
+        $headerParams['Authorization'] = $this->apiClient->getSerializer()->toHeaderValue($authToken);
         // header params
-        if ($x_api_key !== null) {
-            $headerParams['x-api-key'] = $this->apiClient->getSerializer()->toHeaderValue($x_api_key);
-        }
+        $accessToken = $this->apiClient->getConfig()->getAccessToken();
+        $headerParams['x-api-key'] = $this->apiClient->getSerializer()->toHeaderValue($accessToken);
+        
         // path params
         if ($supplier_id !== null) {
             $resourcePath = str_replace(
@@ -437,15 +427,13 @@ class SuppliersApi
      *
      * Add a list of suppliers
      *
-     * @param string $authorization Auth token (required)
-     * @param string $x_api_key API Key (required)
      * @param \VoloCommerce\Api\v1\Model\AddSuppliers $body  (optional)
      * @throws \VoloCommerce\Api\v1\ApiException on non-2xx response
      * @return \VoloCommerce\Api\v1\Model\SupplierResponseBeanList
      */
-    public function saveSupplier($authorization, $x_api_key, $body = null)
+    public function saveSupplier($body = null)
     {
-        list($response) = $this->saveSupplierWithHttpInfo($authorization, $x_api_key, $body);
+        list($response) = $this->saveSupplierWithHttpInfo($body);
         return $response;
     }
 
@@ -454,13 +442,11 @@ class SuppliersApi
      *
      * Add a list of suppliers
      *
-     * @param string $authorization Auth token (required)
-     * @param string $x_api_key API Key (required)
      * @param \VoloCommerce\Api\v1\Model\AddSuppliers $body  (optional)
      * @throws \VoloCommerce\Api\v1\ApiException on non-2xx response
      * @return array of \VoloCommerce\Api\v1\Model\SupplierResponseBeanList, HTTP status code, HTTP response headers (array of strings)
      */
-    public function saveSupplierWithHttpInfo($authorization, $x_api_key, $body = null)
+    public function saveSupplierWithHttpInfo($body = null)
     {
         // verify the required parameter 'authorization' is set
         if ($authorization === null) {
@@ -483,13 +469,12 @@ class SuppliersApi
         $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(['application/json; charset=utf-8']);
 
         // header params
-        if ($authorization !== null) {
-            $headerParams['Authorization'] = $this->apiClient->getSerializer()->toHeaderValue($authorization);
-        }
+        $authToken = $this->apiClient->getApiKeyWithPrefix('Authorization');
+        $headerParams['Authorization'] = $this->apiClient->getSerializer()->toHeaderValue($authToken);
         // header params
-        if ($x_api_key !== null) {
-            $headerParams['x-api-key'] = $this->apiClient->getSerializer()->toHeaderValue($x_api_key);
-        }
+        $accessToken = $this->apiClient->getConfig()->getAccessToken();
+        $headerParams['x-api-key'] = $this->apiClient->getSerializer()->toHeaderValue($accessToken);
+        
         // body params
         $_tempBody = null;
         if (isset($body)) {

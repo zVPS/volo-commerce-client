@@ -92,14 +92,12 @@ class ProductsApi
      *
      * Returns a list of Exportable Fields
      *
-     * @param string $authorization Auth token (required)
-     * @param string $x_api_key API Key (required)
      * @throws \VoloCommerce\Api\v1\ApiException on non-2xx response
      * @return \VoloCommerce\Api\v1\Model\ProductPriceNamesResponse
      */
-    public function getAllExportableFields($authorization, $x_api_key)
+    public function getAllExportableFields()
     {
-        list($response) = $this->getAllExportableFieldsWithHttpInfo($authorization, $x_api_key);
+        list($response) = $this->getAllExportableFieldsWithHttpInfo();
         return $response;
     }
 
@@ -108,12 +106,10 @@ class ProductsApi
      *
      * Returns a list of Exportable Fields
      *
-     * @param string $authorization Auth token (required)
-     * @param string $x_api_key API Key (required)
      * @throws \VoloCommerce\Api\v1\ApiException on non-2xx response
      * @return array of \VoloCommerce\Api\v1\Model\ProductPriceNamesResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getAllExportableFieldsWithHttpInfo($authorization, $x_api_key)
+    public function getAllExportableFieldsWithHttpInfo()
     {
         // verify the required parameter 'authorization' is set
         if ($authorization === null) {
@@ -136,13 +132,11 @@ class ProductsApi
         $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(['application/json']);
 
         // header params
-        if ($authorization !== null) {
-            $headerParams['Authorization'] = $this->apiClient->getSerializer()->toHeaderValue($authorization);
-        }
+        $authToken = $this->apiClient->getApiKeyWithPrefix('Authorization');
+        $headerParams['Authorization'] = $this->apiClient->getSerializer()->toHeaderValue($authToken);
         // header params
-        if ($x_api_key !== null) {
-            $headerParams['x-api-key'] = $this->apiClient->getSerializer()->toHeaderValue($x_api_key);
-        }
+        $accessToken = $this->apiClient->getConfig()->getAccessToken();
+        $headerParams['x-api-key'] = $this->apiClient->getSerializer()->toHeaderValue($accessToken);
 
         // for model (json/xml)
         if (isset($_tempBody)) {
@@ -184,15 +178,13 @@ class ProductsApi
      *
      * Returns the courier name used on eBay template for products
      *
-     * @param string $authorization Auth token (required)
-     * @param string $x_api_key API Key (required)
      * @param string $stock_number  (optional)
      * @throws \VoloCommerce\Api\v1\ApiException on non-2xx response
      * @return \VoloCommerce\Api\v1\Model\EbayCourierNameResponse
      */
-    public function getCourierName($authorization, $x_api_key, $stock_number = null)
+    public function getCourierName($stock_number = null)
     {
-        list($response) = $this->getCourierNameWithHttpInfo($authorization, $x_api_key, $stock_number);
+        list($response) = $this->getCourierNameWithHttpInfo($stock_number);
         return $response;
     }
 
@@ -201,13 +193,11 @@ class ProductsApi
      *
      * Returns the courier name used on eBay template for products
      *
-     * @param string $authorization Auth token (required)
-     * @param string $x_api_key API Key (required)
      * @param string $stock_number  (optional)
      * @throws \VoloCommerce\Api\v1\ApiException on non-2xx response
      * @return array of \VoloCommerce\Api\v1\Model\EbayCourierNameResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getCourierNameWithHttpInfo($authorization, $x_api_key, $stock_number = null)
+    public function getCourierNameWithHttpInfo($stock_number = null)
     {
         // verify the required parameter 'authorization' is set
         if ($authorization === null) {
@@ -234,13 +224,11 @@ class ProductsApi
             $queryParams['stockNumber'] = $this->apiClient->getSerializer()->toQueryValue($stock_number);
         }
         // header params
-        if ($authorization !== null) {
-            $headerParams['Authorization'] = $this->apiClient->getSerializer()->toHeaderValue($authorization);
-        }
+        $authToken = $this->apiClient->getApiKeyWithPrefix('Authorization');
+        $headerParams['Authorization'] = $this->apiClient->getSerializer()->toHeaderValue($authToken);
         // header params
-        if ($x_api_key !== null) {
-            $headerParams['x-api-key'] = $this->apiClient->getSerializer()->toHeaderValue($x_api_key);
-        }
+        $accessToken = $this->apiClient->getConfig()->getAccessToken();
+        $headerParams['x-api-key'] = $this->apiClient->getSerializer()->toHeaderValue($accessToken);
 
         // for model (json/xml)
         if (isset($_tempBody)) {
@@ -283,14 +271,12 @@ class ProductsApi
      * Returns a list of inventory flags
      *
      * @param string $flag_type Flag Type (required)
-     * @param string $authorization Auth token (required)
-     * @param string $x_api_key API Key (required)
      * @throws \VoloCommerce\Api\v1\ApiException on non-2xx response
      * @return \VoloCommerce\Api\v1\Model\FlagsResponse
      */
-    public function getInventoryFlags($flag_type, $authorization, $x_api_key)
+    public function getInventoryFlags($flag_type)
     {
-        list($response) = $this->getInventoryFlagsWithHttpInfo($flag_type, $authorization, $x_api_key);
+        list($response) = $this->getInventoryFlagsWithHttpInfo($flag_type);
         return $response;
     }
 
@@ -300,12 +286,10 @@ class ProductsApi
      * Returns a list of inventory flags
      *
      * @param string $flag_type Flag Type (required)
-     * @param string $authorization Auth token (required)
-     * @param string $x_api_key API Key (required)
      * @throws \VoloCommerce\Api\v1\ApiException on non-2xx response
      * @return array of \VoloCommerce\Api\v1\Model\FlagsResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getInventoryFlagsWithHttpInfo($flag_type, $authorization, $x_api_key)
+    public function getInventoryFlagsWithHttpInfo($flag_type)
     {
         // verify the required parameter 'flag_type' is set
         if ($flag_type === null) {
@@ -332,13 +316,11 @@ class ProductsApi
         $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType([]);
 
         // header params
-        if ($authorization !== null) {
-            $headerParams['Authorization'] = $this->apiClient->getSerializer()->toHeaderValue($authorization);
-        }
+        $authToken = $this->apiClient->getApiKeyWithPrefix('Authorization');
+        $headerParams['Authorization'] = $this->apiClient->getSerializer()->toHeaderValue($authToken);
         // header params
-        if ($x_api_key !== null) {
-            $headerParams['x-api-key'] = $this->apiClient->getSerializer()->toHeaderValue($x_api_key);
-        }
+        $accessToken = $this->apiClient->getConfig()->getAccessToken();
+        $headerParams['x-api-key'] = $this->apiClient->getSerializer()->toHeaderValue($accessToken);
         // path params
         if ($flag_type !== null) {
             $resourcePath = str_replace(
@@ -388,8 +370,6 @@ class ProductsApi
      *
      * Returns smaller standard set of product data
      *
-     * @param string $authorization Auth token (required)
-     * @param string $x_api_key API Key (required)
      * @param string $stock_number Stock Number (optional)
      * @param string $isbn ISBN (optional)
      * @param string $upc UPC (optional)
@@ -411,9 +391,9 @@ class ProductsApi
      * @throws \VoloCommerce\Api\v1\ApiException on non-2xx response
      * @return \VoloCommerce\Api\v1\Model\PartialProductResult
      */
-    public function getPartialProducts($authorization, $x_api_key, $stock_number = null, $isbn = null, $upc = null, $title = null, $list_on = null, $on_hand_qty1 = null, $on_hand_qty2 = null, $on_hand_comparator = null, $available_qty1 = null, $available_qty2 = null, $available_comparator = null, $status = null, $supplier_id = null, $is_drop_ship = null, $page_number = null, $entries_per_page = null, $exclude_listing_sk_us = null, $discontinued = null)
+    public function getPartialProducts($stock_number = null, $isbn = null, $upc = null, $title = null, $list_on = null, $on_hand_qty1 = null, $on_hand_qty2 = null, $on_hand_comparator = null, $available_qty1 = null, $available_qty2 = null, $available_comparator = null, $status = null, $supplier_id = null, $is_drop_ship = null, $page_number = null, $entries_per_page = null, $exclude_listing_sk_us = null, $discontinued = null)
     {
-        list($response) = $this->getPartialProductsWithHttpInfo($authorization, $x_api_key, $stock_number, $isbn, $upc, $title, $list_on, $on_hand_qty1, $on_hand_qty2, $on_hand_comparator, $available_qty1, $available_qty2, $available_comparator, $status, $supplier_id, $is_drop_ship, $page_number, $entries_per_page, $exclude_listing_sk_us, $discontinued);
+        list($response) = $this->getPartialProductsWithHttpInfo($stock_number, $isbn, $upc, $title, $list_on, $on_hand_qty1, $on_hand_qty2, $on_hand_comparator, $available_qty1, $available_qty2, $available_comparator, $status, $supplier_id, $is_drop_ship, $page_number, $entries_per_page, $exclude_listing_sk_us, $discontinued);
         return $response;
     }
 
@@ -422,8 +402,6 @@ class ProductsApi
      *
      * Returns smaller standard set of product data
      *
-     * @param string $authorization Auth token (required)
-     * @param string $x_api_key API Key (required)
      * @param string $stock_number Stock Number (optional)
      * @param string $isbn ISBN (optional)
      * @param string $upc UPC (optional)
@@ -445,7 +423,7 @@ class ProductsApi
      * @throws \VoloCommerce\Api\v1\ApiException on non-2xx response
      * @return array of \VoloCommerce\Api\v1\Model\PartialProductResult, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getPartialProductsWithHttpInfo($authorization, $x_api_key, $stock_number = null, $isbn = null, $upc = null, $title = null, $list_on = null, $on_hand_qty1 = null, $on_hand_qty2 = null, $on_hand_comparator = null, $available_qty1 = null, $available_qty2 = null, $available_comparator = null, $status = null, $supplier_id = null, $is_drop_ship = null, $page_number = null, $entries_per_page = null, $exclude_listing_sk_us = null, $discontinued = null)
+    public function getPartialProductsWithHttpInfo($stock_number = null, $isbn = null, $upc = null, $title = null, $list_on = null, $on_hand_qty1 = null, $on_hand_qty2 = null, $on_hand_comparator = null, $available_qty1 = null, $available_qty2 = null, $available_comparator = null, $status = null, $supplier_id = null, $is_drop_ship = null, $page_number = null, $entries_per_page = null, $exclude_listing_sk_us = null, $discontinued = null)
     {
         // verify the required parameter 'authorization' is set
         if ($authorization === null) {
@@ -540,13 +518,11 @@ class ProductsApi
             $queryParams['discontinued'] = $this->apiClient->getSerializer()->toQueryValue($discontinued);
         }
         // header params
-        if ($authorization !== null) {
-            $headerParams['Authorization'] = $this->apiClient->getSerializer()->toHeaderValue($authorization);
-        }
+        $authToken = $this->apiClient->getApiKeyWithPrefix('Authorization');
+        $headerParams['Authorization'] = $this->apiClient->getSerializer()->toHeaderValue($authToken);
         // header params
-        if ($x_api_key !== null) {
-            $headerParams['x-api-key'] = $this->apiClient->getSerializer()->toHeaderValue($x_api_key);
-        }
+        $accessToken = $this->apiClient->getConfig()->getAccessToken();
+        $headerParams['x-api-key'] = $this->apiClient->getSerializer()->toHeaderValue($accessToken);
 
         // for model (json/xml)
         if (isset($_tempBody)) {
@@ -588,15 +564,13 @@ class ProductsApi
      *
      * Returns a list of Product Image
      *
-     * @param string $authorization Auth token (required)
-     * @param string $x_api_key API Key (required)
      * @param string $stock_number Stock Number (optional)
      * @throws \VoloCommerce\Api\v1\ApiException on non-2xx response
      * @return \VoloCommerce\Api\v1\Model\ProductImageResponse
      */
-    public function getProductImages($authorization, $x_api_key, $stock_number = null)
+    public function getProductImages($stock_number = null)
     {
-        list($response) = $this->getProductImagesWithHttpInfo($authorization, $x_api_key, $stock_number);
+        list($response) = $this->getProductImagesWithHttpInfo($stock_number);
         return $response;
     }
 
@@ -605,13 +579,11 @@ class ProductsApi
      *
      * Returns a list of Product Image
      *
-     * @param string $authorization Auth token (required)
-     * @param string $x_api_key API Key (required)
      * @param string $stock_number Stock Number (optional)
      * @throws \VoloCommerce\Api\v1\ApiException on non-2xx response
      * @return array of \VoloCommerce\Api\v1\Model\ProductImageResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getProductImagesWithHttpInfo($authorization, $x_api_key, $stock_number = null)
+    public function getProductImagesWithHttpInfo($stock_number = null)
     {
         // verify the required parameter 'authorization' is set
         if ($authorization === null) {
@@ -638,13 +610,11 @@ class ProductsApi
             $queryParams['stockNumber'] = $this->apiClient->getSerializer()->toQueryValue($stock_number);
         }
         // header params
-        if ($authorization !== null) {
-            $headerParams['Authorization'] = $this->apiClient->getSerializer()->toHeaderValue($authorization);
-        }
+        $authToken = $this->apiClient->getApiKeyWithPrefix('Authorization');
+        $headerParams['Authorization'] = $this->apiClient->getSerializer()->toHeaderValue($authToken);
         // header params
-        if ($x_api_key !== null) {
-            $headerParams['x-api-key'] = $this->apiClient->getSerializer()->toHeaderValue($x_api_key);
-        }
+        $accessToken = $this->apiClient->getConfig()->getAccessToken();
+        $headerParams['x-api-key'] = $this->apiClient->getSerializer()->toHeaderValue($accessToken);
 
         // for model (json/xml)
         if (isset($_tempBody)) {
@@ -686,14 +656,12 @@ class ProductsApi
      *
      * Returns a list of Product Price Names
      *
-     * @param string $authorization Auth token (required)
-     * @param string $x_api_key API Key (required)
      * @throws \VoloCommerce\Api\v1\ApiException on non-2xx response
      * @return \VoloCommerce\Api\v1\Model\ProductPriceNamesResponse
      */
-    public function getProductPriceNames($authorization, $x_api_key)
+    public function getProductPriceNames()
     {
-        list($response) = $this->getProductPriceNamesWithHttpInfo($authorization, $x_api_key);
+        list($response) = $this->getProductPriceNamesWithHttpInfo();
         return $response;
     }
 
@@ -702,12 +670,10 @@ class ProductsApi
      *
      * Returns a list of Product Price Names
      *
-     * @param string $authorization Auth token (required)
-     * @param string $x_api_key API Key (required)
      * @throws \VoloCommerce\Api\v1\ApiException on non-2xx response
      * @return array of \VoloCommerce\Api\v1\Model\ProductPriceNamesResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getProductPriceNamesWithHttpInfo($authorization, $x_api_key)
+    public function getProductPriceNamesWithHttpInfo()
     {
         // verify the required parameter 'authorization' is set
         if ($authorization === null) {
@@ -730,13 +696,11 @@ class ProductsApi
         $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(['application/json']);
 
         // header params
-        if ($authorization !== null) {
-            $headerParams['Authorization'] = $this->apiClient->getSerializer()->toHeaderValue($authorization);
-        }
+        $authToken = $this->apiClient->getApiKeyWithPrefix('Authorization');
+        $headerParams['Authorization'] = $this->apiClient->getSerializer()->toHeaderValue($authToken);
         // header params
-        if ($x_api_key !== null) {
-            $headerParams['x-api-key'] = $this->apiClient->getSerializer()->toHeaderValue($x_api_key);
-        }
+        $accessToken = $this->apiClient->getConfig()->getAccessToken();
+        $headerParams['x-api-key'] = $this->apiClient->getSerializer()->toHeaderValue($accessToken);
 
         // for model (json/xml)
         if (isset($_tempBody)) {
@@ -778,16 +742,14 @@ class ProductsApi
      *
      * Returns a list of Product Image
      *
-     * @param string $authorization Auth token (required)
-     * @param string $x_api_key API Key (required)
      * @param string $stock_number Stock Number (optional)
      * @param string $currency Currency (optional)
      * @throws \VoloCommerce\Api\v1\ApiException on non-2xx response
      * @return \VoloCommerce\Api\v1\Model\ProductPriceResponse
      */
-    public function getProductPrices($authorization, $x_api_key, $stock_number = null, $currency = null)
+    public function getProductPrices($stock_number = null, $currency = null)
     {
-        list($response) = $this->getProductPricesWithHttpInfo($authorization, $x_api_key, $stock_number, $currency);
+        list($response) = $this->getProductPricesWithHttpInfo($stock_number, $currency);
         return $response;
     }
 
@@ -796,14 +758,12 @@ class ProductsApi
      *
      * Returns a list of Product Image
      *
-     * @param string $authorization Auth token (required)
-     * @param string $x_api_key API Key (required)
      * @param string $stock_number Stock Number (optional)
      * @param string $currency Currency (optional)
      * @throws \VoloCommerce\Api\v1\ApiException on non-2xx response
      * @return array of \VoloCommerce\Api\v1\Model\ProductPriceResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getProductPricesWithHttpInfo($authorization, $x_api_key, $stock_number = null, $currency = null)
+    public function getProductPricesWithHttpInfo($stock_number = null, $currency = null)
     {
         // verify the required parameter 'authorization' is set
         if ($authorization === null) {
@@ -834,13 +794,11 @@ class ProductsApi
             $queryParams['currency'] = $this->apiClient->getSerializer()->toQueryValue($currency);
         }
         // header params
-        if ($authorization !== null) {
-            $headerParams['Authorization'] = $this->apiClient->getSerializer()->toHeaderValue($authorization);
-        }
+        $authToken = $this->apiClient->getApiKeyWithPrefix('Authorization');
+        $headerParams['Authorization'] = $this->apiClient->getSerializer()->toHeaderValue($authToken);
         // header params
-        if ($x_api_key !== null) {
-            $headerParams['x-api-key'] = $this->apiClient->getSerializer()->toHeaderValue($x_api_key);
-        }
+        $accessToken = $this->apiClient->getConfig()->getAccessToken();
+        $headerParams['x-api-key'] = $this->apiClient->getSerializer()->toHeaderValue($accessToken);
 
         // for model (json/xml)
         if (isset($_tempBody)) {
@@ -882,8 +840,6 @@ class ProductsApi
      *
      * Returns standard set of product data for products matching given search criteria
      *
-     * @param string $authorization Auth token (required)
-     * @param string $x_api_key API Key (required)
      * @param string $stock_number Stock Number (optional)
      * @param string $isbn ISBN (optional)
      * @param string $upc UPC (optional)
@@ -908,9 +864,9 @@ class ProductsApi
      * @throws \VoloCommerce\Api\v1\ApiException on non-2xx response
      * @return \VoloCommerce\Api\v1\Model\ProductResultBean
      */
-    public function getProducts($authorization, $x_api_key, $stock_number = null, $isbn = null, $upc = null, $title = null, $list_on = null, $on_hand_qty1 = null, $on_hand_qty2 = null, $on_hand_comparator = null, $status = null, $supplier_id = null, $is_drop_ship = null, $page_number = null, $entries_per_page = null, $exclude_listing_sk_us = null, $discontinued = null, $description = null, $description2 = null, $description3 = null, $description4 = null, $description5 = null, $supplier_sku = null)
+    public function getProducts($stock_number = null, $isbn = null, $upc = null, $title = null, $list_on = null, $on_hand_qty1 = null, $on_hand_qty2 = null, $on_hand_comparator = null, $status = null, $supplier_id = null, $is_drop_ship = null, $page_number = null, $entries_per_page = null, $exclude_listing_sk_us = null, $discontinued = null, $description = null, $description2 = null, $description3 = null, $description4 = null, $description5 = null, $supplier_sku = null)
     {
-        list($response) = $this->getProductsWithHttpInfo($authorization, $x_api_key, $stock_number, $isbn, $upc, $title, $list_on, $on_hand_qty1, $on_hand_qty2, $on_hand_comparator, $status, $supplier_id, $is_drop_ship, $page_number, $entries_per_page, $exclude_listing_sk_us, $discontinued, $description, $description2, $description3, $description4, $description5, $supplier_sku);
+        list($response) = $this->getProductsWithHttpInfo($stock_number, $isbn, $upc, $title, $list_on, $on_hand_qty1, $on_hand_qty2, $on_hand_comparator, $status, $supplier_id, $is_drop_ship, $page_number, $entries_per_page, $exclude_listing_sk_us, $discontinued, $description, $description2, $description3, $description4, $description5, $supplier_sku);
         return $response;
     }
 
@@ -919,8 +875,6 @@ class ProductsApi
      *
      * Returns standard set of product data for products matching given search criteria
      *
-     * @param string $authorization Auth token (required)
-     * @param string $x_api_key API Key (required)
      * @param string $stock_number Stock Number (optional)
      * @param string $isbn ISBN (optional)
      * @param string $upc UPC (optional)
@@ -945,7 +899,7 @@ class ProductsApi
      * @throws \VoloCommerce\Api\v1\ApiException on non-2xx response
      * @return array of \VoloCommerce\Api\v1\Model\ProductResultBean, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getProductsWithHttpInfo($authorization, $x_api_key, $stock_number = null, $isbn = null, $upc = null, $title = null, $list_on = null, $on_hand_qty1 = null, $on_hand_qty2 = null, $on_hand_comparator = null, $status = null, $supplier_id = null, $is_drop_ship = null, $page_number = null, $entries_per_page = null, $exclude_listing_sk_us = null, $discontinued = null, $description = null, $description2 = null, $description3 = null, $description4 = null, $description5 = null, $supplier_sku = null)
+    public function getProductsWithHttpInfo($stock_number = null, $isbn = null, $upc = null, $title = null, $list_on = null, $on_hand_qty1 = null, $on_hand_qty2 = null, $on_hand_comparator = null, $status = null, $supplier_id = null, $is_drop_ship = null, $page_number = null, $entries_per_page = null, $exclude_listing_sk_us = null, $discontinued = null, $description = null, $description2 = null, $description3 = null, $description4 = null, $description5 = null, $supplier_sku = null)
     {
         // verify the required parameter 'authorization' is set
         if ($authorization === null) {
@@ -1052,13 +1006,11 @@ class ProductsApi
             $queryParams['supplierSKU'] = $this->apiClient->getSerializer()->toQueryValue($supplier_sku);
         }
         // header params
-        if ($authorization !== null) {
-            $headerParams['Authorization'] = $this->apiClient->getSerializer()->toHeaderValue($authorization);
-        }
+        $authToken = $this->apiClient->getApiKeyWithPrefix('Authorization');
+        $headerParams['Authorization'] = $this->apiClient->getSerializer()->toHeaderValue($authToken);
         // header params
-        if ($x_api_key !== null) {
-            $headerParams['x-api-key'] = $this->apiClient->getSerializer()->toHeaderValue($x_api_key);
-        }
+        $accessToken = $this->apiClient->getConfig()->getAccessToken();
+        $headerParams['x-api-key'] = $this->apiClient->getSerializer()->toHeaderValue($accessToken);
 
         // for model (json/xml)
         if (isset($_tempBody)) {
@@ -1100,16 +1052,14 @@ class ProductsApi
      *
      * Returns eBay question content
      *
-     * @param string $authorization Auth token (required)
-     * @param string $x_api_key API Key (required)
      * @param int $question_id Question ID (optional)
      * @param string $message_id Message ID (optional)
      * @throws \VoloCommerce\Api\v1\ApiException on non-2xx response
      * @return \VoloCommerce\Api\v1\Model\QuestionMessage
      */
-    public function getQuestionMessage($authorization, $x_api_key, $question_id = null, $message_id = null)
+    public function getQuestionMessage($question_id = null, $message_id = null)
     {
-        list($response) = $this->getQuestionMessageWithHttpInfo($authorization, $x_api_key, $question_id, $message_id);
+        list($response) = $this->getQuestionMessageWithHttpInfo($question_id, $message_id);
         return $response;
     }
 
@@ -1118,14 +1068,12 @@ class ProductsApi
      *
      * Returns eBay question content
      *
-     * @param string $authorization Auth token (required)
-     * @param string $x_api_key API Key (required)
      * @param int $question_id Question ID (optional)
      * @param string $message_id Message ID (optional)
      * @throws \VoloCommerce\Api\v1\ApiException on non-2xx response
      * @return array of \VoloCommerce\Api\v1\Model\QuestionMessage, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getQuestionMessageWithHttpInfo($authorization, $x_api_key, $question_id = null, $message_id = null)
+    public function getQuestionMessageWithHttpInfo($question_id = null, $message_id = null)
     {
         // verify the required parameter 'authorization' is set
         if ($authorization === null) {
@@ -1156,13 +1104,11 @@ class ProductsApi
             $queryParams['messageId'] = $this->apiClient->getSerializer()->toQueryValue($message_id);
         }
         // header params
-        if ($authorization !== null) {
-            $headerParams['Authorization'] = $this->apiClient->getSerializer()->toHeaderValue($authorization);
-        }
+        $authToken = $this->apiClient->getApiKeyWithPrefix('Authorization');
+        $headerParams['Authorization'] = $this->apiClient->getSerializer()->toHeaderValue($authToken);
         // header params
-        if ($x_api_key !== null) {
-            $headerParams['x-api-key'] = $this->apiClient->getSerializer()->toHeaderValue($x_api_key);
-        }
+        $accessToken = $this->apiClient->getConfig()->getAccessToken();
+        $headerParams['x-api-key'] = $this->apiClient->getSerializer()->toHeaderValue($accessToken);
 
         // for model (json/xml)
         if (isset($_tempBody)) {
@@ -1204,8 +1150,6 @@ class ProductsApi
      *
      * Returns a list of eBay product question data
      *
-     * @param string $authorization Auth token (required)
-     * @param string $x_api_key API Key (required)
      * @param string $sender_user_id Sender User ID (optional)
      * @param string $subject Subject (optional)
      * @param string $item_number eBay item number (optional)
@@ -1217,9 +1161,9 @@ class ProductsApi
      * @throws \VoloCommerce\Api\v1\ApiException on non-2xx response
      * @return \VoloCommerce\Api\v1\Model\QuestionResult
      */
-    public function getQuestions($authorization, $x_api_key, $sender_user_id = null, $subject = null, $item_number = null, $product_title = null, $from_date = null, $to_date = null, $entries_per_page = null, $page_number = null)
+    public function getQuestions($sender_user_id = null, $subject = null, $item_number = null, $product_title = null, $from_date = null, $to_date = null, $entries_per_page = null, $page_number = null)
     {
-        list($response) = $this->getQuestionsWithHttpInfo($authorization, $x_api_key, $sender_user_id, $subject, $item_number, $product_title, $from_date, $to_date, $entries_per_page, $page_number);
+        list($response) = $this->getQuestionsWithHttpInfo($sender_user_id, $subject, $item_number, $product_title, $from_date, $to_date, $entries_per_page, $page_number);
         return $response;
     }
 
@@ -1228,8 +1172,6 @@ class ProductsApi
      *
      * Returns a list of eBay product question data
      *
-     * @param string $authorization Auth token (required)
-     * @param string $x_api_key API Key (required)
      * @param string $sender_user_id Sender User ID (optional)
      * @param string $subject Subject (optional)
      * @param string $item_number eBay item number (optional)
@@ -1241,7 +1183,7 @@ class ProductsApi
      * @throws \VoloCommerce\Api\v1\ApiException on non-2xx response
      * @return array of \VoloCommerce\Api\v1\Model\QuestionResult, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getQuestionsWithHttpInfo($authorization, $x_api_key, $sender_user_id = null, $subject = null, $item_number = null, $product_title = null, $from_date = null, $to_date = null, $entries_per_page = null, $page_number = null)
+    public function getQuestionsWithHttpInfo($sender_user_id = null, $subject = null, $item_number = null, $product_title = null, $from_date = null, $to_date = null, $entries_per_page = null, $page_number = null)
     {
         // verify the required parameter 'authorization' is set
         if ($authorization === null) {
@@ -1296,13 +1238,11 @@ class ProductsApi
             $queryParams['pageNumber'] = $this->apiClient->getSerializer()->toQueryValue($page_number);
         }
         // header params
-        if ($authorization !== null) {
-            $headerParams['Authorization'] = $this->apiClient->getSerializer()->toHeaderValue($authorization);
-        }
+        $authToken = $this->apiClient->getApiKeyWithPrefix('Authorization');
+        $headerParams['Authorization'] = $this->apiClient->getSerializer()->toHeaderValue($authToken);
         // header params
-        if ($x_api_key !== null) {
-            $headerParams['x-api-key'] = $this->apiClient->getSerializer()->toHeaderValue($x_api_key);
-        }
+        $accessToken = $this->apiClient->getConfig()->getAccessToken();
+        $headerParams['x-api-key'] = $this->apiClient->getSerializer()->toHeaderValue($accessToken);// header params
 
         // for model (json/xml)
         if (isset($_tempBody)) {
@@ -1344,8 +1284,6 @@ class ProductsApi
      *
      * Returns product stock levels
      *
-     * @param string $authorization Auth token (required)
-     * @param string $x_api_key API Key (required)
      * @param string $stock_number Stock Number (optional)
      * @param string $isbn ISBN (optional)
      * @param string $upc UPC (optional)
@@ -1367,9 +1305,9 @@ class ProductsApi
      * @throws \VoloCommerce\Api\v1\ApiException on non-2xx response
      * @return \VoloCommerce\Api\v1\Model\StockLevelResult
      */
-    public function getStockLevels($authorization, $x_api_key, $stock_number = null, $isbn = null, $upc = null, $title = null, $list_on = null, $on_hand_qty1 = null, $on_hand_qty2 = null, $on_hand_comparator = null, $available_qty1 = null, $available_qty2 = null, $available_comparator = null, $status = null, $supplier_id = null, $is_drop_ship = null, $page_number = null, $entries_per_page = null, $exclude_listing_sk_us = null, $discontinued = null)
+    public function getStockLevels($stock_number = null, $isbn = null, $upc = null, $title = null, $list_on = null, $on_hand_qty1 = null, $on_hand_qty2 = null, $on_hand_comparator = null, $available_qty1 = null, $available_qty2 = null, $available_comparator = null, $status = null, $supplier_id = null, $is_drop_ship = null, $page_number = null, $entries_per_page = null, $exclude_listing_sk_us = null, $discontinued = null)
     {
-        list($response) = $this->getStockLevelsWithHttpInfo($authorization, $x_api_key, $stock_number, $isbn, $upc, $title, $list_on, $on_hand_qty1, $on_hand_qty2, $on_hand_comparator, $available_qty1, $available_qty2, $available_comparator, $status, $supplier_id, $is_drop_ship, $page_number, $entries_per_page, $exclude_listing_sk_us, $discontinued);
+        list($response) = $this->getStockLevelsWithHttpInfo($stock_number, $isbn, $upc, $title, $list_on, $on_hand_qty1, $on_hand_qty2, $on_hand_comparator, $available_qty1, $available_qty2, $available_comparator, $status, $supplier_id, $is_drop_ship, $page_number, $entries_per_page, $exclude_listing_sk_us, $discontinued);
         return $response;
     }
 
@@ -1378,8 +1316,6 @@ class ProductsApi
      *
      * Returns product stock levels
      *
-     * @param string $authorization Auth token (required)
-     * @param string $x_api_key API Key (required)
      * @param string $stock_number Stock Number (optional)
      * @param string $isbn ISBN (optional)
      * @param string $upc UPC (optional)
@@ -1401,16 +1337,8 @@ class ProductsApi
      * @throws \VoloCommerce\Api\v1\ApiException on non-2xx response
      * @return array of \VoloCommerce\Api\v1\Model\StockLevelResult, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getStockLevelsWithHttpInfo($authorization, $x_api_key, $stock_number = null, $isbn = null, $upc = null, $title = null, $list_on = null, $on_hand_qty1 = null, $on_hand_qty2 = null, $on_hand_comparator = null, $available_qty1 = null, $available_qty2 = null, $available_comparator = null, $status = null, $supplier_id = null, $is_drop_ship = null, $page_number = null, $entries_per_page = null, $exclude_listing_sk_us = null, $discontinued = null)
+    public function getStockLevelsWithHttpInfo($authorization = null, $x_api_key = null, $stock_number = null, $isbn = null, $upc = null, $title = null, $list_on = null, $on_hand_qty1 = null, $on_hand_qty2 = null, $on_hand_comparator = null, $available_qty1 = null, $available_qty2 = null, $available_comparator = null, $status = null, $supplier_id = null, $is_drop_ship = null, $page_number = null, $entries_per_page = null, $exclude_listing_sk_us = null, $discontinued = null)
     {
-        // verify the required parameter 'authorization' is set
-        if ($authorization === null) {
-            throw new \InvalidArgumentException('Missing the required parameter $authorization when calling getStockLevels');
-        }
-        // verify the required parameter 'x_api_key' is set
-        if ($x_api_key === null) {
-            throw new \InvalidArgumentException('Missing the required parameter $x_api_key when calling getStockLevels');
-        }
         // parse inputs
         $resourcePath = "/products/stockLevels";
         $httpBody = '';
@@ -1496,13 +1424,11 @@ class ProductsApi
             $queryParams['discontinued'] = $this->apiClient->getSerializer()->toQueryValue($discontinued);
         }
         // header params
-        if ($authorization !== null) {
-            $headerParams['Authorization'] = $this->apiClient->getSerializer()->toHeaderValue($authorization);
-        }
+        $authToken = $this->apiClient->getApiKeyWithPrefix('Authorization');
+        $headerParams['Authorization'] = $this->apiClient->getSerializer()->toHeaderValue($authToken);
         // header params
-        if ($x_api_key !== null) {
-            $headerParams['x-api-key'] = $this->apiClient->getSerializer()->toHeaderValue($x_api_key);
-        }
+        $accessToken = $this->apiClient->getConfig()->getAccessToken();
+        $headerParams['x-api-key'] = $this->apiClient->getSerializer()->toHeaderValue($accessToken);
 
         // for model (json/xml)
         if (isset($_tempBody)) {
@@ -1544,15 +1470,13 @@ class ProductsApi
      *
      * Returns the locations and quantity of where given stock numbers are stored
      *
-     * @param string $authorization Auth token (required)
-     * @param string $x_api_key API Key (required)
      * @param string $stock_number Stock Number (optional)
      * @throws \VoloCommerce\Api\v1\ApiException on non-2xx response
      * @return \VoloCommerce\Api\v1\Model\StockLocationResponse
      */
-    public function getStockLevels_0($authorization, $x_api_key, $stock_number = null)
+    public function getStockLevels_0($stock_number = null)
     {
-        list($response) = $this->getStockLevels_0WithHttpInfo($authorization, $x_api_key, $stock_number);
+        list($response) = $this->getStockLevels_0WithHttpInfo($stock_number);
         return $response;
     }
 
@@ -1561,13 +1485,11 @@ class ProductsApi
      *
      * Returns the locations and quantity of where given stock numbers are stored
      *
-     * @param string $authorization Auth token (required)
-     * @param string $x_api_key API Key (required)
      * @param string $stock_number Stock Number (optional)
      * @throws \VoloCommerce\Api\v1\ApiException on non-2xx response
      * @return array of \VoloCommerce\Api\v1\Model\StockLocationResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getStockLevels_0WithHttpInfo($authorization, $x_api_key, $stock_number = null)
+    public function getStockLevels_0WithHttpInfo($stock_number = null)
     {
         // verify the required parameter 'authorization' is set
         if ($authorization === null) {
@@ -1594,13 +1516,11 @@ class ProductsApi
             $queryParams['stockNumber'] = $this->apiClient->getSerializer()->toQueryValue($stock_number);
         }
         // header params
-        if ($authorization !== null) {
-            $headerParams['Authorization'] = $this->apiClient->getSerializer()->toHeaderValue($authorization);
-        }
+        $authToken = $this->apiClient->getApiKeyWithPrefix('Authorization');
+        $headerParams['Authorization'] = $this->apiClient->getSerializer()->toHeaderValue($authToken);
         // header params
-        if ($x_api_key !== null) {
-            $headerParams['x-api-key'] = $this->apiClient->getSerializer()->toHeaderValue($x_api_key);
-        }
+        $accessToken = $this->apiClient->getConfig()->getAccessToken();
+        $headerParams['x-api-key'] = $this->apiClient->getSerializer()->toHeaderValue($accessToken);
 
         // for model (json/xml)
         if (isset($_tempBody)) {
@@ -1642,15 +1562,13 @@ class ProductsApi
      *
      * Import product data
      *
-     * @param string $authorization Auth token (required)
-     * @param string $x_api_key API Key (required)
      * @param \VoloCommerce\Api\v1\Model\CustomImportRequest $body  (optional)
      * @throws \VoloCommerce\Api\v1\ApiException on non-2xx response
      * @return \VoloCommerce\Api\v1\Model\ImportProductsResponse
      */
-    public function importProducts($authorization, $x_api_key, $body = null)
+    public function importProducts($body = null)
     {
-        list($response) = $this->importProductsWithHttpInfo($authorization, $x_api_key, $body);
+        list($response) = $this->importProductsWithHttpInfo($body);
         return $response;
     }
 
@@ -1659,13 +1577,11 @@ class ProductsApi
      *
      * Import product data
      *
-     * @param string $authorization Auth token (required)
-     * @param string $x_api_key API Key (required)
      * @param \VoloCommerce\Api\v1\Model\CustomImportRequest $body  (optional)
      * @throws \VoloCommerce\Api\v1\ApiException on non-2xx response
      * @return array of \VoloCommerce\Api\v1\Model\ImportProductsResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function importProductsWithHttpInfo($authorization, $x_api_key, $body = null)
+    public function importProductsWithHttpInfo($body = null)
     {
         // verify the required parameter 'authorization' is set
         if ($authorization === null) {
@@ -1688,13 +1604,11 @@ class ProductsApi
         $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(['application/json; charset=utf-8']);
 
         // header params
-        if ($authorization !== null) {
-            $headerParams['Authorization'] = $this->apiClient->getSerializer()->toHeaderValue($authorization);
-        }
+        $authToken = $this->apiClient->getApiKeyWithPrefix('Authorization');
+        $headerParams['Authorization'] = $this->apiClient->getSerializer()->toHeaderValue($authToken);
         // header params
-        if ($x_api_key !== null) {
-            $headerParams['x-api-key'] = $this->apiClient->getSerializer()->toHeaderValue($x_api_key);
-        }
+        $accessToken = $this->apiClient->getConfig()->getAccessToken();
+        $headerParams['x-api-key'] = $this->apiClient->getSerializer()->toHeaderValue($accessToken);
         // body params
         $_tempBody = null;
         if (isset($body)) {
@@ -1741,15 +1655,13 @@ class ProductsApi
      *
      * Define product data to be retrieved
      *
-     * @param string $authorization Auth token (required)
-     * @param string $x_api_key API Key (required)
      * @param \VoloCommerce\Api\v1\Model\ProductsSearchByFieldRequest $body  (optional)
      * @throws \VoloCommerce\Api\v1\ApiException on non-2xx response
      * @return \VoloCommerce\Api\v1\Model\ProductSearchByFieldResponse
      */
-    public function searchProductsByField($authorization, $x_api_key, $body = null)
+    public function searchProductsByField($body = null)
     {
-        list($response) = $this->searchProductsByFieldWithHttpInfo($authorization, $x_api_key, $body);
+        list($response) = $this->searchProductsByFieldWithHttpInfo($body);
         return $response;
     }
 
@@ -1758,13 +1670,11 @@ class ProductsApi
      *
      * Define product data to be retrieved
      *
-     * @param string $authorization Auth token (required)
-     * @param string $x_api_key API Key (required)
      * @param \VoloCommerce\Api\v1\Model\ProductsSearchByFieldRequest $body  (optional)
      * @throws \VoloCommerce\Api\v1\ApiException on non-2xx response
      * @return array of \VoloCommerce\Api\v1\Model\ProductSearchByFieldResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function searchProductsByFieldWithHttpInfo($authorization, $x_api_key, $body = null)
+    public function searchProductsByFieldWithHttpInfo($body = null)
     {
         // verify the required parameter 'authorization' is set
         if ($authorization === null) {
@@ -1787,13 +1697,11 @@ class ProductsApi
         $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(['application/json; charset=utf-8']);
 
         // header params
-        if ($authorization !== null) {
-            $headerParams['Authorization'] = $this->apiClient->getSerializer()->toHeaderValue($authorization);
-        }
+        $authToken = $this->apiClient->getApiKeyWithPrefix('Authorization');
+        $headerParams['Authorization'] = $this->apiClient->getSerializer()->toHeaderValue($authToken);
         // header params
-        if ($x_api_key !== null) {
-            $headerParams['x-api-key'] = $this->apiClient->getSerializer()->toHeaderValue($x_api_key);
-        }
+        $accessToken = $this->apiClient->getConfig()->getAccessToken();
+        $headerParams['x-api-key'] = $this->apiClient->getSerializer()->toHeaderValue($accessToken);
         // body params
         $_tempBody = null;
         if (isset($body)) {
@@ -1840,15 +1748,13 @@ class ProductsApi
      *
      * Send reply to eBay product questions
      *
-     * @param string $authorization Auth token (required)
-     * @param string $x_api_key API Key (required)
      * @param \VoloCommerce\Api\v1\Model\ReplyProductQuestionBean $body  (optional)
      * @throws \VoloCommerce\Api\v1\ApiException on non-2xx response
      * @return \VoloCommerce\Api\v1\Model\MessageResponse
      */
-    public function sendProductAnswer($authorization, $x_api_key, $body = null)
+    public function sendProductAnswer($body = null)
     {
-        list($response) = $this->sendProductAnswerWithHttpInfo($authorization, $x_api_key, $body);
+        list($response) = $this->sendProductAnswerWithHttpInfo($body);
         return $response;
     }
 
@@ -1857,13 +1763,11 @@ class ProductsApi
      *
      * Send reply to eBay product questions
      *
-     * @param string $authorization Auth token (required)
-     * @param string $x_api_key API Key (required)
      * @param \VoloCommerce\Api\v1\Model\ReplyProductQuestionBean $body  (optional)
      * @throws \VoloCommerce\Api\v1\ApiException on non-2xx response
      * @return array of \VoloCommerce\Api\v1\Model\MessageResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function sendProductAnswerWithHttpInfo($authorization, $x_api_key, $body = null)
+    public function sendProductAnswerWithHttpInfo($body = null)
     {
         // verify the required parameter 'authorization' is set
         if ($authorization === null) {
@@ -1886,13 +1790,11 @@ class ProductsApi
         $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(['application/json; charset=utf-8']);
 
         // header params
-        if ($authorization !== null) {
-            $headerParams['Authorization'] = $this->apiClient->getSerializer()->toHeaderValue($authorization);
-        }
+        $authToken = $this->apiClient->getApiKeyWithPrefix('Authorization');
+        $headerParams['Authorization'] = $this->apiClient->getSerializer()->toHeaderValue($authToken);
         // header params
-        if ($x_api_key !== null) {
-            $headerParams['x-api-key'] = $this->apiClient->getSerializer()->toHeaderValue($x_api_key);
-        }
+        $accessToken = $this->apiClient->getConfig()->getAccessToken();
+        $headerParams['x-api-key'] = $this->apiClient->getSerializer()->toHeaderValue($accessToken);
         // body params
         $_tempBody = null;
         if (isset($body)) {
@@ -1939,15 +1841,13 @@ class ProductsApi
      *
      * Update stock level and prices of products
      *
-     * @param string $authorization Auth token (required)
-     * @param string $x_api_key API Key (required)
      * @param \VoloCommerce\Api\v1\Model\PartialProductUpdates $body  (optional)
      * @throws \VoloCommerce\Api\v1\ApiException on non-2xx response
      * @return \VoloCommerce\Api\v1\Model\PartialProductUpdateResult
      */
-    public function updateProducts($authorization, $x_api_key, $body = null)
+    public function updateProducts($body = null)
     {
-        list($response) = $this->updateProductsWithHttpInfo($authorization, $x_api_key, $body);
+        list($response) = $this->updateProductsWithHttpInfo($body);
         return $response;
     }
 
@@ -1956,13 +1856,11 @@ class ProductsApi
      *
      * Update stock level and prices of products
      *
-     * @param string $authorization Auth token (required)
-     * @param string $x_api_key API Key (required)
      * @param \VoloCommerce\Api\v1\Model\PartialProductUpdates $body  (optional)
      * @throws \VoloCommerce\Api\v1\ApiException on non-2xx response
      * @return array of \VoloCommerce\Api\v1\Model\PartialProductUpdateResult, HTTP status code, HTTP response headers (array of strings)
      */
-    public function updateProductsWithHttpInfo($authorization, $x_api_key, $body = null)
+    public function updateProductsWithHttpInfo($body = null)
     {
         // verify the required parameter 'authorization' is set
         if ($authorization === null) {
@@ -1985,13 +1883,11 @@ class ProductsApi
         $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(['application/json; charset=utf-8']);
 
         // header params
-        if ($authorization !== null) {
-            $headerParams['Authorization'] = $this->apiClient->getSerializer()->toHeaderValue($authorization);
-        }
+        $authToken = $this->apiClient->getApiKeyWithPrefix('Authorization');
+        $headerParams['Authorization'] = $this->apiClient->getSerializer()->toHeaderValue($authToken);
         // header params
-        if ($x_api_key !== null) {
-            $headerParams['x-api-key'] = $this->apiClient->getSerializer()->toHeaderValue($x_api_key);
-        }
+        $accessToken = $this->apiClient->getConfig()->getAccessToken();
+        $headerParams['x-api-key'] = $this->apiClient->getSerializer()->toHeaderValue($accessToken);
         // body params
         $_tempBody = null;
         if (isset($body)) {
@@ -2038,15 +1934,13 @@ class ProductsApi
      *
      * Update stock level and prices of products asynchronously
      *
-     * @param string $authorization Auth token (required)
-     * @param string $x_api_key API Key (required)
      * @param \VoloCommerce\Api\v1\Model\PartialProductUpdates $body Partial products objects that needs to be updated (optional)
      * @throws \VoloCommerce\Api\v1\ApiException on non-2xx response
      * @return \VoloCommerce\Api\v1\Model\UpdateProductAsyncResponse
      */
-    public function updateProductsAsync($authorization, $x_api_key, $body = null)
+    public function updateProductsAsync($body = null)
     {
-        list($response) = $this->updateProductsAsyncWithHttpInfo($authorization, $x_api_key, $body);
+        list($response) = $this->updateProductsAsyncWithHttpInfo($body);
         return $response;
     }
 
@@ -2055,13 +1949,11 @@ class ProductsApi
      *
      * Update stock level and prices of products asynchronously
      *
-     * @param string $authorization Auth token (required)
-     * @param string $x_api_key API Key (required)
      * @param \VoloCommerce\Api\v1\Model\PartialProductUpdates $body Partial products objects that needs to be updated (optional)
      * @throws \VoloCommerce\Api\v1\ApiException on non-2xx response
      * @return array of \VoloCommerce\Api\v1\Model\UpdateProductAsyncResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function updateProductsAsyncWithHttpInfo($authorization, $x_api_key, $body = null)
+    public function updateProductsAsyncWithHttpInfo($body = null)
     {
         // verify the required parameter 'authorization' is set
         if ($authorization === null) {
@@ -2084,13 +1976,11 @@ class ProductsApi
         $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(['application/json; charset=utf-8']);
 
         // header params
-        if ($authorization !== null) {
-            $headerParams['Authorization'] = $this->apiClient->getSerializer()->toHeaderValue($authorization);
-        }
+        $authToken = $this->apiClient->getApiKeyWithPrefix('Authorization');
+        $headerParams['Authorization'] = $this->apiClient->getSerializer()->toHeaderValue($authToken);
         // header params
-        if ($x_api_key !== null) {
-            $headerParams['x-api-key'] = $this->apiClient->getSerializer()->toHeaderValue($x_api_key);
-        }
+        $accessToken = $this->apiClient->getConfig()->getAccessToken();
+        $headerParams['x-api-key'] = $this->apiClient->getSerializer()->toHeaderValue($accessToken);
         // body params
         $_tempBody = null;
         if (isset($body)) {
