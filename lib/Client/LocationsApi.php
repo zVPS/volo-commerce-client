@@ -278,14 +278,7 @@ class LocationsApi
      */
     public function getLocationsWithHttpInfo($id = null, $parent_id = null, $pickable = null, $physical_location = null, $virtual_stock = null, $page_number = null, $entries_per_page = null)
     {
-        // verify the required parameter 'authorization' is set
-        if ($authorization === null) {
-            throw new \InvalidArgumentException('Missing the required parameter $authorization when calling getLocations');
-        }
-        // verify the required parameter 'x_api_key' is set
-        if ($x_api_key === null) {
-            throw new \InvalidArgumentException('Missing the required parameter $x_api_key when calling getLocations');
-        }
+        
         // parse inputs
         $resourcePath = "/locations";
         $httpBody = '';
@@ -395,14 +388,7 @@ class LocationsApi
      */
     public function saveLocationsWithHttpInfo($body = null)
     {
-        // verify the required parameter 'authorization' is set
-        if ($authorization === null) {
-            throw new \InvalidArgumentException('Missing the required parameter $authorization when calling saveLocations');
-        }
-        // verify the required parameter 'x_api_key' is set
-        if ($x_api_key === null) {
-            throw new \InvalidArgumentException('Missing the required parameter $x_api_key when calling saveLocations');
-        }
+        
         // parse inputs
         $resourcePath = "/locations";
         $httpBody = '';

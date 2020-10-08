@@ -113,14 +113,7 @@ class SalesOrdersApi
      */
     public function addOrderHistoriesWithHttpInfo($body = null)
     {
-        // verify the required parameter 'authorization' is set
-        if ($authorization === null) {
-            throw new \InvalidArgumentException('Missing the required parameter $authorization when calling addOrderHistories');
-        }
-        // verify the required parameter 'x_api_key' is set
-        if ($x_api_key === null) {
-            throw new \InvalidArgumentException('Missing the required parameter $x_api_key when calling addOrderHistories');
-        }
+        
         // parse inputs
         $resourcePath = "/salesOrders/histories";
         $httpBody = '';
@@ -213,14 +206,7 @@ class SalesOrdersApi
         if ($esp_order_no === null) {
             throw new \InvalidArgumentException('Missing the required parameter $esp_order_no when calling addOrderItem');
         }
-        // verify the required parameter 'authorization' is set
-        if ($authorization === null) {
-            throw new \InvalidArgumentException('Missing the required parameter $authorization when calling addOrderItem');
-        }
-        // verify the required parameter 'x_api_key' is set
-        if ($x_api_key === null) {
-            throw new \InvalidArgumentException('Missing the required parameter $x_api_key when calling addOrderItem');
-        }
+        
         // parse inputs
         $resourcePath = "/salesOrders/{espOrderNo}/orderItems";
         $httpBody = '';
@@ -325,14 +311,7 @@ class SalesOrdersApi
         if ($order_item_id === null) {
             throw new \InvalidArgumentException('Missing the required parameter $order_item_id when calling deleteOrderItems');
         }
-        // verify the required parameter 'authorization' is set
-        if ($authorization === null) {
-            throw new \InvalidArgumentException('Missing the required parameter $authorization when calling deleteOrderItems');
-        }
-        // verify the required parameter 'x_api_key' is set
-        if ($x_api_key === null) {
-            throw new \InvalidArgumentException('Missing the required parameter $x_api_key when calling deleteOrderItems');
-        }
+        
         // parse inputs
         $resourcePath = "/salesOrders/{espOrderNo}/orderItems/{orderItemId}";
         $httpBody = '';
@@ -428,14 +407,7 @@ class SalesOrdersApi
      */
     public function getAmazonRefundReasonsWithHttpInfo()
     {
-        // verify the required parameter 'authorization' is set
-        if ($authorization === null) {
-            throw new \InvalidArgumentException('Missing the required parameter $authorization when calling getAmazonRefundReasons');
-        }
-        // verify the required parameter 'x_api_key' is set
-        if ($x_api_key === null) {
-            throw new \InvalidArgumentException('Missing the required parameter $x_api_key when calling getAmazonRefundReasons');
-        }
+        
         // parse inputs
         $resourcePath = "/salesOrders/amazon/refund/reasons";
         $httpBody = '';
@@ -519,14 +491,7 @@ class SalesOrdersApi
      */
     public function getOrderCreditsWithHttpInfo($start_date = null, $end_date = null)
     {
-        // verify the required parameter 'authorization' is set
-        if ($authorization === null) {
-            throw new \InvalidArgumentException('Missing the required parameter $authorization when calling getOrderCredits');
-        }
-        // verify the required parameter 'x_api_key' is set
-        if ($x_api_key === null) {
-            throw new \InvalidArgumentException('Missing the required parameter $x_api_key when calling getOrderCredits');
-        }
+        
         // parse inputs
         $resourcePath = "/salesOrders/credits";
         $httpBody = '';
@@ -616,14 +581,7 @@ class SalesOrdersApi
      */
     public function getOrderHistoriesWithHttpInfo($esp_order_no = null)
     {
-        // verify the required parameter 'authorization' is set
-        if ($authorization === null) {
-            throw new \InvalidArgumentException('Missing the required parameter $authorization when calling getOrderHistories');
-        }
-        // verify the required parameter 'x_api_key' is set
-        if ($x_api_key === null) {
-            throw new \InvalidArgumentException('Missing the required parameter $x_api_key when calling getOrderHistories');
-        }
+        
         // parse inputs
         $resourcePath = "/salesOrders/histories";
         $httpBody = '';
@@ -710,14 +668,7 @@ class SalesOrdersApi
      */
     public function getOrderStatusesWithHttpInfo()
     {
-        // verify the required parameter 'authorization' is set
-        if ($authorization === null) {
-            throw new \InvalidArgumentException('Missing the required parameter $authorization when calling getOrderStatuses');
-        }
-        // verify the required parameter 'x_api_key' is set
-        if ($x_api_key === null) {
-            throw new \InvalidArgumentException('Missing the required parameter $x_api_key when calling getOrderStatuses');
-        }
+        
         // parse inputs
         $resourcePath = "/salesOrders/statuses";
         $httpBody = '';
@@ -853,14 +804,7 @@ class SalesOrdersApi
      */
     public function getOrdersWithHttpInfo($start_date = null, $end_date = null, $order_source = null, $seller_id = null, $paid = null, $entries_per_page = null, $page_number = null, $customer_email = null, $include_credits = null, $start_modified_date = null, $end_modified_date = null, $esp_order_no = null, $order_status = null, $flag1 = null, $flag2 = null, $courier_name = null, $fulfilment_type = null, $trade_sale = null, $supplier_id = null, $paid_status = null, $picked = null, $posted_batch_id = null, $back_order = null, $external_order_reference = null, $invoice_number = null, $stock_number = null, $courier_service = null, $currency_code = null)
     {
-        // verify the required parameter 'authorization' is set
-        if ($authorization === null) {
-            throw new \InvalidArgumentException('Missing the required parameter $authorization when calling getOrders');
-        }
-        // verify the required parameter 'x_api_key' is set
-        if ($x_api_key === null) {
-            throw new \InvalidArgumentException('Missing the required parameter $x_api_key when calling getOrders');
-        }
+        
         // parse inputs
         $resourcePath = "/salesOrders";
         $httpBody = '';
@@ -1058,14 +1002,7 @@ class SalesOrdersApi
         if ($flag_type === null) {
             throw new \InvalidArgumentException('Missing the required parameter $flag_type when calling getSalesOrderFlags');
         }
-        // verify the required parameter 'authorization' is set
-        if ($authorization === null) {
-            throw new \InvalidArgumentException('Missing the required parameter $authorization when calling getSalesOrderFlags');
-        }
-        // verify the required parameter 'x_api_key' is set
-        if ($x_api_key === null) {
-            throw new \InvalidArgumentException('Missing the required parameter $x_api_key when calling getSalesOrderFlags');
-        }
+        
         // parse inputs
         $resourcePath = "/salesOrders/flags/{flagType}";
         $httpBody = '';
@@ -1159,14 +1096,7 @@ class SalesOrdersApi
      */
     public function getSellerIdsWithHttpInfo($id = null, $source = null, $seller_name = null)
     {
-        // verify the required parameter 'authorization' is set
-        if ($authorization === null) {
-            throw new \InvalidArgumentException('Missing the required parameter $authorization when calling getSellerIds');
-        }
-        // verify the required parameter 'x_api_key' is set
-        if ($x_api_key === null) {
-            throw new \InvalidArgumentException('Missing the required parameter $x_api_key when calling getSellerIds');
-        }
+        
         // parse inputs
         $resourcePath = "/salesOrders/sellers";
         $httpBody = '';
@@ -1258,14 +1188,7 @@ class SalesOrdersApi
      */
     public function getStockActionsWithHttpInfo()
     {
-        // verify the required parameter 'authorization' is set
-        if ($authorization === null) {
-            throw new \InvalidArgumentException('Missing the required parameter $authorization when calling getStockActions');
-        }
-        // verify the required parameter 'x_api_key' is set
-        if ($x_api_key === null) {
-            throw new \InvalidArgumentException('Missing the required parameter $x_api_key when calling getStockActions');
-        }
+        
         // parse inputs
         $resourcePath = "/salesOrders/refund/stockActions";
         $httpBody = '';
@@ -1353,14 +1276,7 @@ class SalesOrdersApi
         if ($esp_order_no === null) {
             throw new \InvalidArgumentException('Missing the required parameter $esp_order_no when calling issueRefund');
         }
-        // verify the required parameter 'authorization' is set
-        if ($authorization === null) {
-            throw new \InvalidArgumentException('Missing the required parameter $authorization when calling issueRefund');
-        }
-        // verify the required parameter 'x_api_key' is set
-        if ($x_api_key === null) {
-            throw new \InvalidArgumentException('Missing the required parameter $x_api_key when calling issueRefund');
-        }
+        
         // parse inputs
         $resourcePath = "/salesOrders/{espOrderNo}/refund";
         $httpBody = '';
@@ -1455,14 +1371,7 @@ class SalesOrdersApi
      */
     public function saveOrdersWithHttpInfo($body = null)
     {
-        // verify the required parameter 'authorization' is set
-        if ($authorization === null) {
-            throw new \InvalidArgumentException('Missing the required parameter $authorization when calling saveOrders');
-        }
-        // verify the required parameter 'x_api_key' is set
-        if ($x_api_key === null) {
-            throw new \InvalidArgumentException('Missing the required parameter $x_api_key when calling saveOrders');
-        }
+        
         // parse inputs
         $resourcePath = "/salesOrders";
         $httpBody = '';
@@ -1555,14 +1464,7 @@ class SalesOrdersApi
         if ($esp_order_no === null) {
             throw new \InvalidArgumentException('Missing the required parameter $esp_order_no when calling savePayment');
         }
-        // verify the required parameter 'authorization' is set
-        if ($authorization === null) {
-            throw new \InvalidArgumentException('Missing the required parameter $authorization when calling savePayment');
-        }
-        // verify the required parameter 'x_api_key' is set
-        if ($x_api_key === null) {
-            throw new \InvalidArgumentException('Missing the required parameter $x_api_key when calling savePayment');
-        }
+        
         // parse inputs
         $resourcePath = "/salesOrders/{espOrderNo}/payments";
         $httpBody = '';
@@ -1663,14 +1565,7 @@ class SalesOrdersApi
         if ($esp_order_no === null) {
             throw new \InvalidArgumentException('Missing the required parameter $esp_order_no when calling updateOrderItems');
         }
-        // verify the required parameter 'authorization' is set
-        if ($authorization === null) {
-            throw new \InvalidArgumentException('Missing the required parameter $authorization when calling updateOrderItems');
-        }
-        // verify the required parameter 'x_api_key' is set
-        if ($x_api_key === null) {
-            throw new \InvalidArgumentException('Missing the required parameter $x_api_key when calling updateOrderItems');
-        }
+        
         // parse inputs
         $resourcePath = "/salesOrders/{espOrderNo}/orderItems";
         $httpBody = '';
@@ -1765,14 +1660,7 @@ class SalesOrdersApi
      */
     public function updateOrdersWithHttpInfo($body = null)
     {
-        // verify the required parameter 'authorization' is set
-        if ($authorization === null) {
-            throw new \InvalidArgumentException('Missing the required parameter $authorization when calling updateOrders');
-        }
-        // verify the required parameter 'x_api_key' is set
-        if ($x_api_key === null) {
-            throw new \InvalidArgumentException('Missing the required parameter $x_api_key when calling updateOrders');
-        }
+        
         // parse inputs
         $resourcePath = "/salesOrders";
         $httpBody = '';
@@ -1859,14 +1747,7 @@ class SalesOrdersApi
      */
     public function updateOrdersAsyncWithHttpInfo($body = null)
     {
-        // verify the required parameter 'authorization' is set
-        if ($authorization === null) {
-            throw new \InvalidArgumentException('Missing the required parameter $authorization when calling updateOrdersAsync');
-        }
-        // verify the required parameter 'x_api_key' is set
-        if ($x_api_key === null) {
-            throw new \InvalidArgumentException('Missing the required parameter $x_api_key when calling updateOrdersAsync');
-        }
+        
         // parse inputs
         $resourcePath = "/salesOrders/async";
         $httpBody = '';
@@ -1965,14 +1846,7 @@ class SalesOrdersApi
         if ($payment_id === null) {
             throw new \InvalidArgumentException('Missing the required parameter $payment_id when calling updateSalesOrderPayment');
         }
-        // verify the required parameter 'authorization' is set
-        if ($authorization === null) {
-            throw new \InvalidArgumentException('Missing the required parameter $authorization when calling updateSalesOrderPayment');
-        }
-        // verify the required parameter 'x_api_key' is set
-        if ($x_api_key === null) {
-            throw new \InvalidArgumentException('Missing the required parameter $x_api_key when calling updateSalesOrderPayment');
-        }
+        
         // parse inputs
         $resourcePath = "/salesOrders/{espOrderNo}/payments/{paymentId}";
         $httpBody = '';

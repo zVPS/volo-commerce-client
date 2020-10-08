@@ -113,14 +113,7 @@ class WebhooksApi
      */
     public function createHookWithHttpInfo($body = null)
     {
-        // verify the required parameter 'authorization' is set
-        if ($authorization === null) {
-            throw new \InvalidArgumentException('Missing the required parameter $authorization when calling createHook');
-        }
-        // verify the required parameter 'x_api_key' is set
-        if ($x_api_key === null) {
-            throw new \InvalidArgumentException('Missing the required parameter $x_api_key when calling createHook');
-        }
+        
         // parse inputs
         $resourcePath = "/webhooks";
         $httpBody = '';
@@ -211,14 +204,7 @@ class WebhooksApi
         if ($web_hook_id === null) {
             throw new \InvalidArgumentException('Missing the required parameter $web_hook_id when calling doDelete');
         }
-        // verify the required parameter 'authorization' is set
-        if ($authorization === null) {
-            throw new \InvalidArgumentException('Missing the required parameter $authorization when calling doDelete');
-        }
-        // verify the required parameter 'x_api_key' is set
-        if ($x_api_key === null) {
-            throw new \InvalidArgumentException('Missing the required parameter $x_api_key when calling doDelete');
-        }
+        
         // parse inputs
         $resourcePath = "/webhooks/{webHookId}";
         $httpBody = '';
@@ -306,14 +292,7 @@ class WebhooksApi
      */
     public function getAvailableEventsWithHttpInfo()
     {
-        // verify the required parameter 'authorization' is set
-        if ($authorization === null) {
-            throw new \InvalidArgumentException('Missing the required parameter $authorization when calling getAvailableEvents');
-        }
-        // verify the required parameter 'x_api_key' is set
-        if ($x_api_key === null) {
-            throw new \InvalidArgumentException('Missing the required parameter $x_api_key when calling getAvailableEvents');
-        }
+        
         // parse inputs
         $resourcePath = "/webhooks/events";
         $httpBody = '';
@@ -399,14 +378,7 @@ class WebhooksApi
         if ($event_type === null) {
             throw new \InvalidArgumentException('Missing the required parameter $event_type when calling getAvailableScope');
         }
-        // verify the required parameter 'authorization' is set
-        if ($authorization === null) {
-            throw new \InvalidArgumentException('Missing the required parameter $authorization when calling getAvailableScope');
-        }
-        // verify the required parameter 'x_api_key' is set
-        if ($x_api_key === null) {
-            throw new \InvalidArgumentException('Missing the required parameter $x_api_key when calling getAvailableScope');
-        }
+        
         // parse inputs
         $resourcePath = "/webhooks/scopes/{eventType}";
         $httpBody = '';
@@ -502,14 +474,7 @@ class WebhooksApi
      */
     public function getWebHooksWithHttpInfo($web_hook_id = null, $event = null, $type = null, $code = null)
     {
-        // verify the required parameter 'authorization' is set
-        if ($authorization === null) {
-            throw new \InvalidArgumentException('Missing the required parameter $authorization when calling getWebHooks');
-        }
-        // verify the required parameter 'x_api_key' is set
-        if ($x_api_key === null) {
-            throw new \InvalidArgumentException('Missing the required parameter $x_api_key when calling getWebHooks');
-        }
+        
         // parse inputs
         $resourcePath = "/webhooks";
         $httpBody = '';
@@ -613,14 +578,7 @@ class WebhooksApi
         if ($web_hook_id === null) {
             throw new \InvalidArgumentException('Missing the required parameter $web_hook_id when calling updateWebhooks');
         }
-        // verify the required parameter 'authorization' is set
-        if ($authorization === null) {
-            throw new \InvalidArgumentException('Missing the required parameter $authorization when calling updateWebhooks');
-        }
-        // verify the required parameter 'x_api_key' is set
-        if ($x_api_key === null) {
-            throw new \InvalidArgumentException('Missing the required parameter $x_api_key when calling updateWebhooks');
-        }
+        
         // parse inputs
         $resourcePath = "/webhooks/{webHookId}";
         $httpBody = '';

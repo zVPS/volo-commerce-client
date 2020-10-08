@@ -196,14 +196,7 @@ class CustomersApi
      */
     public function getCustomersWithHttpInfo($id = null, $name = null, $company_name = null, $postcode = null, $email = null, $phone = null, $merchant_type = null)
     {
-        // verify the required parameter 'authorization' is set
-        if ($authorization === null) {
-            throw new \InvalidArgumentException('Missing the required parameter $authorization when calling getCustomers');
-        }
-        // verify the required parameter 'x_api_key' is set
-        if ($x_api_key === null) {
-            throw new \InvalidArgumentException('Missing the required parameter $x_api_key when calling getCustomers');
-        }
+        
         // parse inputs
         $resourcePath = "/customers";
         $httpBody = '';
@@ -317,14 +310,7 @@ class CustomersApi
         if ($customer_id === null) {
             throw new \InvalidArgumentException('Missing the required parameter $customer_id when calling removeCustomer');
         }
-        // verify the required parameter 'authorization' is set
-        if ($authorization === null) {
-            throw new \InvalidArgumentException('Missing the required parameter $authorization when calling removeCustomer');
-        }
-        // verify the required parameter 'x_api_key' is set
-        if ($x_api_key === null) {
-            throw new \InvalidArgumentException('Missing the required parameter $x_api_key when calling removeCustomer');
-        }
+        
         // parse inputs
         $resourcePath = "/customers/{customerId}";
         $httpBody = '';
@@ -414,14 +400,7 @@ class CustomersApi
      */
     public function saveCustomersWithHttpInfo($body = null)
     {
-        // verify the required parameter 'authorization' is set
-        if ($authorization === null) {
-            throw new \InvalidArgumentException('Missing the required parameter $authorization when calling saveCustomers');
-        }
-        // verify the required parameter 'x_api_key' is set
-        if ($x_api_key === null) {
-            throw new \InvalidArgumentException('Missing the required parameter $x_api_key when calling saveCustomers');
-        }
+        
         // parse inputs
         $resourcePath = "/customers";
         $httpBody = '';

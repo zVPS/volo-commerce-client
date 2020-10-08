@@ -111,14 +111,6 @@ class ProductsApi
      */
     public function getAllExportableFieldsWithHttpInfo()
     {
-        // verify the required parameter 'authorization' is set
-        if ($authorization === null) {
-            throw new \InvalidArgumentException('Missing the required parameter $authorization when calling getAllExportableFields');
-        }
-        // verify the required parameter 'x_api_key' is set
-        if ($x_api_key === null) {
-            throw new \InvalidArgumentException('Missing the required parameter $x_api_key when calling getAllExportableFields');
-        }
         // parse inputs
         $resourcePath = "/products/fieldNames";
         $httpBody = '';
@@ -199,14 +191,6 @@ class ProductsApi
      */
     public function getCourierNameWithHttpInfo($stock_number = null)
     {
-        // verify the required parameter 'authorization' is set
-        if ($authorization === null) {
-            throw new \InvalidArgumentException('Missing the required parameter $authorization when calling getCourierName');
-        }
-        // verify the required parameter 'x_api_key' is set
-        if ($x_api_key === null) {
-            throw new \InvalidArgumentException('Missing the required parameter $x_api_key when calling getCourierName');
-        }
         // parse inputs
         $resourcePath = "/products/ebay/courierNames";
         $httpBody = '';
@@ -294,14 +278,6 @@ class ProductsApi
         // verify the required parameter 'flag_type' is set
         if ($flag_type === null) {
             throw new \InvalidArgumentException('Missing the required parameter $flag_type when calling getInventoryFlags');
-        }
-        // verify the required parameter 'authorization' is set
-        if ($authorization === null) {
-            throw new \InvalidArgumentException('Missing the required parameter $authorization when calling getInventoryFlags');
-        }
-        // verify the required parameter 'x_api_key' is set
-        if ($x_api_key === null) {
-            throw new \InvalidArgumentException('Missing the required parameter $x_api_key when calling getInventoryFlags');
         }
         // parse inputs
         $resourcePath = "/products/flags/{flagType}";
@@ -425,14 +401,6 @@ class ProductsApi
      */
     public function getPartialProductsWithHttpInfo($stock_number = null, $isbn = null, $upc = null, $title = null, $list_on = null, $on_hand_qty1 = null, $on_hand_qty2 = null, $on_hand_comparator = null, $available_qty1 = null, $available_qty2 = null, $available_comparator = null, $status = null, $supplier_id = null, $is_drop_ship = null, $page_number = null, $entries_per_page = null, $exclude_listing_sk_us = null, $discontinued = null)
     {
-        // verify the required parameter 'authorization' is set
-        if ($authorization === null) {
-            throw new \InvalidArgumentException('Missing the required parameter $authorization when calling getPartialProducts');
-        }
-        // verify the required parameter 'x_api_key' is set
-        if ($x_api_key === null) {
-            throw new \InvalidArgumentException('Missing the required parameter $x_api_key when calling getPartialProducts');
-        }
         // parse inputs
         $resourcePath = "/products/partial";
         $httpBody = '';
@@ -585,14 +553,6 @@ class ProductsApi
      */
     public function getProductImagesWithHttpInfo($stock_number = null)
     {
-        // verify the required parameter 'authorization' is set
-        if ($authorization === null) {
-            throw new \InvalidArgumentException('Missing the required parameter $authorization when calling getProductImages');
-        }
-        // verify the required parameter 'x_api_key' is set
-        if ($x_api_key === null) {
-            throw new \InvalidArgumentException('Missing the required parameter $x_api_key when calling getProductImages');
-        }
         // parse inputs
         $resourcePath = "/products/images";
         $httpBody = '';
@@ -675,14 +635,6 @@ class ProductsApi
      */
     public function getProductPriceNamesWithHttpInfo()
     {
-        // verify the required parameter 'authorization' is set
-        if ($authorization === null) {
-            throw new \InvalidArgumentException('Missing the required parameter $authorization when calling getProductPriceNames');
-        }
-        // verify the required parameter 'x_api_key' is set
-        if ($x_api_key === null) {
-            throw new \InvalidArgumentException('Missing the required parameter $x_api_key when calling getProductPriceNames');
-        }
         // parse inputs
         $resourcePath = "/products/priceLevels";
         $httpBody = '';
@@ -765,14 +717,6 @@ class ProductsApi
      */
     public function getProductPricesWithHttpInfo($stock_number = null, $currency = null)
     {
-        // verify the required parameter 'authorization' is set
-        if ($authorization === null) {
-            throw new \InvalidArgumentException('Missing the required parameter $authorization when calling getProductPrices');
-        }
-        // verify the required parameter 'x_api_key' is set
-        if ($x_api_key === null) {
-            throw new \InvalidArgumentException('Missing the required parameter $x_api_key when calling getProductPrices');
-        }
         // parse inputs
         $resourcePath = "/products/prices";
         $httpBody = '';
@@ -901,14 +845,6 @@ class ProductsApi
      */
     public function getProductsWithHttpInfo($stock_number = null, $isbn = null, $upc = null, $title = null, $list_on = null, $on_hand_qty1 = null, $on_hand_qty2 = null, $on_hand_comparator = null, $status = null, $supplier_id = null, $is_drop_ship = null, $page_number = null, $entries_per_page = null, $exclude_listing_sk_us = null, $discontinued = null, $description = null, $description2 = null, $description3 = null, $description4 = null, $description5 = null, $supplier_sku = null)
     {
-        // verify the required parameter 'authorization' is set
-        if ($authorization === null) {
-            throw new \InvalidArgumentException('Missing the required parameter $authorization when calling getProducts');
-        }
-        // verify the required parameter 'x_api_key' is set
-        if ($x_api_key === null) {
-            throw new \InvalidArgumentException('Missing the required parameter $x_api_key when calling getProducts');
-        }
         // parse inputs
         $resourcePath = "/products";
         $httpBody = '';
@@ -1075,14 +1011,6 @@ class ProductsApi
      */
     public function getQuestionMessageWithHttpInfo($question_id = null, $message_id = null)
     {
-        // verify the required parameter 'authorization' is set
-        if ($authorization === null) {
-            throw new \InvalidArgumentException('Missing the required parameter $authorization when calling getQuestionMessage');
-        }
-        // verify the required parameter 'x_api_key' is set
-        if ($x_api_key === null) {
-            throw new \InvalidArgumentException('Missing the required parameter $x_api_key when calling getQuestionMessage');
-        }
         // parse inputs
         $resourcePath = "/products/question/message";
         $httpBody = '';
@@ -1185,14 +1113,6 @@ class ProductsApi
      */
     public function getQuestionsWithHttpInfo($sender_user_id = null, $subject = null, $item_number = null, $product_title = null, $from_date = null, $to_date = null, $entries_per_page = null, $page_number = null)
     {
-        // verify the required parameter 'authorization' is set
-        if ($authorization === null) {
-            throw new \InvalidArgumentException('Missing the required parameter $authorization when calling getQuestions');
-        }
-        // verify the required parameter 'x_api_key' is set
-        if ($x_api_key === null) {
-            throw new \InvalidArgumentException('Missing the required parameter $x_api_key when calling getQuestions');
-        }
         // parse inputs
         $resourcePath = "/products/questions";
         $httpBody = '';
@@ -1337,7 +1257,7 @@ class ProductsApi
      * @throws \VoloCommerce\Api\v1\ApiException on non-2xx response
      * @return array of \VoloCommerce\Api\v1\Model\StockLevelResult, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getStockLevelsWithHttpInfo($authorization = null, $x_api_key = null, $stock_number = null, $isbn = null, $upc = null, $title = null, $list_on = null, $on_hand_qty1 = null, $on_hand_qty2 = null, $on_hand_comparator = null, $available_qty1 = null, $available_qty2 = null, $available_comparator = null, $status = null, $supplier_id = null, $is_drop_ship = null, $page_number = null, $entries_per_page = null, $exclude_listing_sk_us = null, $discontinued = null)
+    public function getStockLevelsWithHttpInfo($stock_number = null, $isbn = null, $upc = null, $title = null, $list_on = null, $on_hand_qty1 = null, $on_hand_qty2 = null, $on_hand_comparator = null, $available_qty1 = null, $available_qty2 = null, $available_comparator = null, $status = null, $supplier_id = null, $is_drop_ship = null, $page_number = null, $entries_per_page = null, $exclude_listing_sk_us = null, $discontinued = null)
     {
         // parse inputs
         $resourcePath = "/products/stockLevels";
@@ -1474,9 +1394,9 @@ class ProductsApi
      * @throws \VoloCommerce\Api\v1\ApiException on non-2xx response
      * @return \VoloCommerce\Api\v1\Model\StockLocationResponse
      */
-    public function getStockLevels_0($stock_number = null)
+    public function getStockLevelsByLocations($stock_number = null)
     {
-        list($response) = $this->getStockLevels_0WithHttpInfo($stock_number);
+        list($response) = $this->getStockLevelsByLocationsWithHttpInfo($stock_number);
         return $response;
     }
 
@@ -1489,16 +1409,8 @@ class ProductsApi
      * @throws \VoloCommerce\Api\v1\ApiException on non-2xx response
      * @return array of \VoloCommerce\Api\v1\Model\StockLocationResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getStockLevels_0WithHttpInfo($stock_number = null)
+    public function getStockLevelsByLocationsWithHttpInfo($stock_number = null)
     {
-        // verify the required parameter 'authorization' is set
-        if ($authorization === null) {
-            throw new \InvalidArgumentException('Missing the required parameter $authorization when calling getStockLevels_0');
-        }
-        // verify the required parameter 'x_api_key' is set
-        if ($x_api_key === null) {
-            throw new \InvalidArgumentException('Missing the required parameter $x_api_key when calling getStockLevels_0');
-        }
         // parse inputs
         $resourcePath = "/products/stockLevels/locations";
         $httpBody = '';
@@ -1583,14 +1495,6 @@ class ProductsApi
      */
     public function importProductsWithHttpInfo($body = null)
     {
-        // verify the required parameter 'authorization' is set
-        if ($authorization === null) {
-            throw new \InvalidArgumentException('Missing the required parameter $authorization when calling importProducts');
-        }
-        // verify the required parameter 'x_api_key' is set
-        if ($x_api_key === null) {
-            throw new \InvalidArgumentException('Missing the required parameter $x_api_key when calling importProducts');
-        }
         // parse inputs
         $resourcePath = "/products/import";
         $httpBody = '';
@@ -1676,14 +1580,6 @@ class ProductsApi
      */
     public function searchProductsByFieldWithHttpInfo($body = null)
     {
-        // verify the required parameter 'authorization' is set
-        if ($authorization === null) {
-            throw new \InvalidArgumentException('Missing the required parameter $authorization when calling searchProductsByField');
-        }
-        // verify the required parameter 'x_api_key' is set
-        if ($x_api_key === null) {
-            throw new \InvalidArgumentException('Missing the required parameter $x_api_key when calling searchProductsByField');
-        }
         // parse inputs
         $resourcePath = "/products/searchByField";
         $httpBody = '';
@@ -1769,14 +1665,6 @@ class ProductsApi
      */
     public function sendProductAnswerWithHttpInfo($body = null)
     {
-        // verify the required parameter 'authorization' is set
-        if ($authorization === null) {
-            throw new \InvalidArgumentException('Missing the required parameter $authorization when calling sendProductAnswer');
-        }
-        // verify the required parameter 'x_api_key' is set
-        if ($x_api_key === null) {
-            throw new \InvalidArgumentException('Missing the required parameter $x_api_key when calling sendProductAnswer');
-        }
         // parse inputs
         $resourcePath = "/products/question/reply";
         $httpBody = '';
@@ -1862,14 +1750,6 @@ class ProductsApi
      */
     public function updateProductsWithHttpInfo($body = null)
     {
-        // verify the required parameter 'authorization' is set
-        if ($authorization === null) {
-            throw new \InvalidArgumentException('Missing the required parameter $authorization when calling updateProducts');
-        }
-        // verify the required parameter 'x_api_key' is set
-        if ($x_api_key === null) {
-            throw new \InvalidArgumentException('Missing the required parameter $x_api_key when calling updateProducts');
-        }
         // parse inputs
         $resourcePath = "/products/partial";
         $httpBody = '';
@@ -1955,14 +1835,6 @@ class ProductsApi
      */
     public function updateProductsAsyncWithHttpInfo($body = null)
     {
-        // verify the required parameter 'authorization' is set
-        if ($authorization === null) {
-            throw new \InvalidArgumentException('Missing the required parameter $authorization when calling updateProductsAsync');
-        }
-        // verify the required parameter 'x_api_key' is set
-        if ($x_api_key === null) {
-            throw new \InvalidArgumentException('Missing the required parameter $x_api_key when calling updateProductsAsync');
-        }
         // parse inputs
         $resourcePath = "/products/partial/async";
         $httpBody = '';

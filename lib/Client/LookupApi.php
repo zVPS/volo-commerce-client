@@ -111,14 +111,7 @@ class LookupApi
      */
     public function getOrderTaxRatesWithHttpInfo()
     {
-        // verify the required parameter 'authorization' is set
-        if ($authorization === null) {
-            throw new \InvalidArgumentException('Missing the required parameter $authorization when calling getOrderTaxRates');
-        }
-        // verify the required parameter 'x_api_key' is set
-        if ($x_api_key === null) {
-            throw new \InvalidArgumentException('Missing the required parameter $x_api_key when calling getOrderTaxRates');
-        }
+        
         // parse inputs
         $resourcePath = "/lookup/taxRates";
         $httpBody = '';

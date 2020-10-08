@@ -117,14 +117,7 @@ class BatchApi
         if ($batch_id === null) {
             throw new \InvalidArgumentException('Missing the required parameter $batch_id when calling getBatchStatus');
         }
-        // verify the required parameter 'authorization' is set
-        if ($authorization === null) {
-            throw new \InvalidArgumentException('Missing the required parameter $authorization when calling getBatchStatus');
-        }
-        // verify the required parameter 'x_api_key' is set
-        if ($x_api_key === null) {
-            throw new \InvalidArgumentException('Missing the required parameter $x_api_key when calling getBatchStatus');
-        }
+        
         // parse inputs
         $resourcePath = "/batch/status/{batchId}";
         $httpBody = '';

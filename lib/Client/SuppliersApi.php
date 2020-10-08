@@ -210,14 +210,7 @@ class SuppliersApi
      */
     public function getSuppliersWithHttpInfo($id = null, $supplier_code = null, $supplier_reference = null, $name = null, $vat_number = null, $company_reg_number = null, $phone = null, $fax = null, $email = null, $contact = null, $start_modified_date = null, $end_modified_date = null)
     {
-        // verify the required parameter 'authorization' is set
-        if ($authorization === null) {
-            throw new \InvalidArgumentException('Missing the required parameter $authorization when calling getSuppliers');
-        }
-        // verify the required parameter 'x_api_key' is set
-        if ($x_api_key === null) {
-            throw new \InvalidArgumentException('Missing the required parameter $x_api_key when calling getSuppliers');
-        }
+        
         // parse inputs
         $resourcePath = "/suppliers";
         $httpBody = '';
@@ -351,14 +344,7 @@ class SuppliersApi
         if ($supplier_id === null) {
             throw new \InvalidArgumentException('Missing the required parameter $supplier_id when calling removeSupplier');
         }
-        // verify the required parameter 'authorization' is set
-        if ($authorization === null) {
-            throw new \InvalidArgumentException('Missing the required parameter $authorization when calling removeSupplier');
-        }
-        // verify the required parameter 'x_api_key' is set
-        if ($x_api_key === null) {
-            throw new \InvalidArgumentException('Missing the required parameter $x_api_key when calling removeSupplier');
-        }
+        
         // parse inputs
         $resourcePath = "/suppliers/{supplierId}";
         $httpBody = '';
@@ -448,14 +434,7 @@ class SuppliersApi
      */
     public function saveSupplierWithHttpInfo($body = null)
     {
-        // verify the required parameter 'authorization' is set
-        if ($authorization === null) {
-            throw new \InvalidArgumentException('Missing the required parameter $authorization when calling saveSupplier');
-        }
-        // verify the required parameter 'x_api_key' is set
-        if ($x_api_key === null) {
-            throw new \InvalidArgumentException('Missing the required parameter $x_api_key when calling saveSupplier');
-        }
+        
         // parse inputs
         $resourcePath = "/suppliers";
         $httpBody = '';

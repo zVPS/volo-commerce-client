@@ -111,14 +111,7 @@ class CouriersApi
      */
     public function getCourierNamesWithHttpInfo()
     {
-        // verify the required parameter 'authorization' is set
-        if ($authorization === null) {
-            throw new \InvalidArgumentException('Missing the required parameter $authorization when calling getCourierNames');
-        }
-        // verify the required parameter 'x_api_key' is set
-        if ($x_api_key === null) {
-            throw new \InvalidArgumentException('Missing the required parameter $x_api_key when calling getCourierNames');
-        }
+        
         // parse inputs
         $resourcePath = "/couriers";
         $httpBody = '';
