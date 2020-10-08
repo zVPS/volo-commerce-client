@@ -1,0 +1,51 @@
+# Order
+
+## Properties
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**order_type** | **string** | orderType | [optional] 
+**order_source** | **string** |  | [optional] 
+**external_reference** | **string** |  | [optional] 
+**date** | [**\DateTime**](\DateTime.md) |  | [optional] 
+**customer_company** | **string** |  | [optional] 
+**customer_name** | **string** |  | [optional] 
+**customer_address1** | **string** |  | [optional] 
+**customer_address2** | **string** |  | [optional] 
+**customer_address3** | **string** |  | [optional] 
+**customer_city** | **string** |  | [optional] 
+**customer_county** | **string** |  | [optional] 
+**customer_postcode** | **string** |  | [optional] 
+**customer_country** | **string** |  | [optional] 
+**customer_email** | **string** |  | [optional] 
+**customer_telephone** | **string** |  | [optional] 
+**customer_reference** | **string** |  | [optional] 
+**customer_notes** | **string** |  | [optional] 
+**delivery_company** | **string** |  | [optional] 
+**delivery_name** | **string** |  | [optional] 
+**delivery_address1** | **string** |  | [optional] 
+**delivery_address2** | **string** |  | [optional] 
+**delivery_address3** | **string** |  | [optional] 
+**delivery_city** | **string** |  | [optional] 
+**delivery_county** | **string** |  | [optional] 
+**delivery_postcode** | **string** |  | [optional] 
+**delivery_country** | **string** |  | [optional] 
+**delivery_telephone** | **string** |  | [optional] 
+**shipping_method** | **string** |  | [optional] 
+**shipping_cost** | **float** |  | [optional] 
+**insurance** | **float** |  | [optional] 
+**discount** | **float** |  | [optional] 
+**voucher_code** | **string** |  | [optional] 
+**order_total** | **float** |  | [optional] 
+**payment_complete** | **bool** |  | [optional] 
+**payments** | [**\VoloCommerce\Api\v1\Model\Payments**](Payments.md) |  | [optional] 
+**currency_code** | **string** |  | [optional] 
+**seller_username** | **string** |  | [optional] 
+**order_items** | [**\VoloCommerce\Api\v1\Model\CreateOrderItems**](CreateOrderItems.md) |  | [optional] 
+**order_status** | **string** |  | [optional] 
+**web_order_id** | **int** |  | [optional] 
+**trade_sale** | **bool** |  | [optional] 
+**actual_courier_cost** | **double** |  | [optional] 
+
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+

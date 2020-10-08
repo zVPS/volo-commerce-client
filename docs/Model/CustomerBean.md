@@ -1,0 +1,37 @@
+# CustomerBean
+
+## Properties
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**id** | **int** |  | [optional] 
+**name** | **string** |  | [optional] 
+**company_name** | **string** |  | [optional] 
+**address_line1** | **string** |  | [optional] 
+**address_line2** | **string** |  | [optional] 
+**city** | **string** |  | [optional] 
+**county** | **string** |  | [optional] 
+**country** | **string** |  | [optional] 
+**postcode** | **string** |  | [optional] 
+**phone_number** | **string** |  | [optional] 
+**credit_limit** | **double** |  | [optional] 
+**available_credit** | **double** |  | [optional] 
+**merchant_type** | **string** |  | [optional] 
+**accounts_code** | **string** |  | [optional] 
+**vat_number** | **string** |  | [optional] 
+**company_reg_number** | **string** |  | [optional] 
+**phone_number2** | **string** |  | [optional] 
+**phone_number3** | **string** |  | [optional] 
+**phone_number4** | **string** |  | [optional] 
+**fax_number** | **string** |  | [optional] 
+**province** | **string** |  | [optional] 
+**price_level** | **string** |  | [optional] 
+**has_account** | **bool** |  | [optional] 
+**mobile_number** | **string** |  | [optional] 
+**orders** | **int** |  | [optional] 
+**order_value** | **double** |  | [optional] 
+**avg_order_value** | **double** |  | [optional] 
+**email_address** | **string** |  | [optional] 
+
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+
