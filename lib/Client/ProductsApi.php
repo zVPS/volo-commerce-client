@@ -1386,7 +1386,7 @@ class ProductsApi
     }
 
     /**
-     * Operation getStockLevels_0
+     * Operation getStockLevelsByLocations
      *
      * Returns the locations and quantity of where given stock numbers are stored
      *
@@ -1401,7 +1401,7 @@ class ProductsApi
     }
 
     /**
-     * Operation getStockLevels_0WithHttpInfo
+     * Operation getStockLevelsByLocationsWithHttpInfo
      *
      * Returns the locations and quantity of where given stock numbers are stored
      *
